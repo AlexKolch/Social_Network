@@ -8,15 +8,48 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
+//    let lentaViewController = UINavigationController(rootViewController: LentaViewController())
+//
+//    let profileViewController = UINavigationController(rootViewController: ProfileViewController())
+    
+//    let tabBarController = UITabBarController()
+    
+//    tabBarController.viewControllers = [lentaViewController, profileViewController]
+    
+    func creatLentaViewController() -> UINavigationController {
+        let lentaViewController = UINavigationController(rootViewController: LentaViewController())
+        lentaViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "newspaper.fill"), tag: 0)
+        return lentaViewController
+    }
+    
+    func creatProfileViewController() -> UINavigationController {
+        let profileViewController = UINavigationController(rootViewController: ProfileViewController())
+        profileViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 1)
+        return profileViewController
+    }
+    
+    func createTabBar() -> UITabBarController {
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [creatLentaViewController(), creatProfileViewController()]
+        return tabBar
+    }
+    
+    
     var window: UIWindow?
+    
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let winScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: winScene)
+        window.rootViewController = createTabBar()
+        window.makeKeyAndVisible()
+        
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
