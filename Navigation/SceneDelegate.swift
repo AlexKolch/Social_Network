@@ -17,10 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
 //    tabBarController.viewControllers = [lentaViewController, profileViewController]
     
-    func creatLentaViewController() -> UINavigationController {
-        let lentaViewController = UINavigationController(rootViewController: LentaViewController())
-        lentaViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "newspaper.fill"), tag: 0)
-        return lentaViewController
+    func creatFeedViewController() -> UINavigationController {
+        let FeedViewController = UINavigationController(rootViewController: FeedViewController())
+        FeedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "newspaper.fill"), tag: 0)
+        return FeedViewController
     }
     
     func creatProfileViewController() -> UINavigationController {
@@ -31,9 +31,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        tabBar.viewControllers = [creatLentaViewController(), creatProfileViewController()]
+        tabBar.viewControllers = [creatFeedViewController(), creatProfileViewController()]
+        tabBar.tabBar.backgroundColor = .white
         return tabBar
     }
+ 
     
     
     var window: UIWindow?
