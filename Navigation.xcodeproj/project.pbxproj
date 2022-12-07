@@ -14,6 +14,8 @@
 		FC4063C9293F66E5008BBE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4063C7293F66E5008BBE60 /* LaunchScreen.storyboard */; };
 		FC4063D1293F8D3A008BBE60 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */; };
 		FC4063D32940810D008BBE60 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D22940810D008BBE60 /* PostViewController.swift */; };
+		FC4063D529409AEA008BBE60 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D429409AEA008BBE60 /* Post.swift */; };
+		FC4063D72940B952008BBE60 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D62940B952008BBE60 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		FC4063CA293F66E5008BBE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FC4063D22940810D008BBE60 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		FC4063D429409AEA008BBE60 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FC4063D62940B952008BBE60 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +65,13 @@
 				FC4063BC293F66E4008BBE60 /* AppDelegate.swift */,
 				FC4063BE293F66E4008BBE60 /* SceneDelegate.swift */,
 				FC4063C0293F66E4008BBE60 /* FeedViewController.swift */,
-				FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */,
 				FC4063D22940810D008BBE60 /* PostViewController.swift */,
+				FC4063D62940B952008BBE60 /* InfoViewController.swift */,
+				FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */,
 				FC4063C5293F66E5008BBE60 /* Assets.xcassets */,
 				FC4063C7293F66E5008BBE60 /* LaunchScreen.storyboard */,
 				FC4063CA293F66E5008BBE60 /* Info.plist */,
+				FC4063D429409AEA008BBE60 /* Post.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -143,6 +149,8 @@
 				FC4063C1293F66E4008BBE60 /* FeedViewController.swift in Sources */,
 				FC4063D1293F8D3A008BBE60 /* ProfileViewController.swift in Sources */,
 				FC4063BD293F66E4008BBE60 /* AppDelegate.swift in Sources */,
+				FC4063D72940B952008BBE60 /* InfoViewController.swift in Sources */,
+				FC4063D529409AEA008BBE60 /* Post.swift in Sources */,
 				FC4063BF293F66E4008BBE60 /* SceneDelegate.swift in Sources */,
 				FC4063D32940810D008BBE60 /* PostViewController.swift in Sources */,
 			);

@@ -8,21 +8,23 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-
+    var post = Post(title: "Мой пост")
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         view.backgroundColor = .white
         setupButton()
         buttonAction()
     }
     
+    
     var button: UIButton = {
     let button = UIButton()
     button.backgroundColor = .systemYellow
-    button.layer.cornerRadius = 20
+    button.layer.cornerRadius = 24
     button.setTitle("Открыть", for: .normal)
-    button.setTitleColor(.lightGray, for: .normal)
+    button.setTitleColor(.white, for: .normal)
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
     button.translatesAutoresizingMaskIntoConstraints = false
     button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -39,7 +41,14 @@ return button
     
     @objc private func buttonAction() {
         let postViewController = PostViewController()
+        postViewController.titlePost = post.title
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
 }
+
+//extension FeedViewController {
+//  public static func main() {
+//  }
+//}
+
 
