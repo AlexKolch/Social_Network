@@ -14,13 +14,12 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-//        buttonGo()
-//        showAlert()
+
 
         view.addSubview(button)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         button.center = view.center
-        button.backgroundColor = .systemYellow
+        button.backgroundColor = .systemRed
         button.setTitle("Открыть", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
@@ -40,6 +39,11 @@ class InfoViewController: UIViewController {
 extension InfoViewController {
     func showAlert() {
         let alertController = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
+        
+        present(alertController, animated: true) {
+            print("alert controller is presented")
+        //alertController.titlePost = info.title
+        //self.navigationController?.pushViewController(alertController, animated: true)
 
         let oneAction = UIAlertAction(title: "Ok", style: .default) { _ in
             print("Ok")
@@ -50,10 +54,7 @@ extension InfoViewController {
             print("Cancel")
         }
         alertController.addAction(twoAction)
-
-
-        present(alertController, animated: true) {
-            print("alert controller is presented")
+       
         }
     }
 }

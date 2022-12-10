@@ -14,9 +14,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        buttonItem()
 
-        
         let myButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonItem))
         navigationItem.rightBarButtonItem = myButton
     }

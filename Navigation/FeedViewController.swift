@@ -15,7 +15,6 @@ class FeedViewController: UIViewController {
         
         view.backgroundColor = .white
         setupButton()
-        buttonAction()
     }
     
     
@@ -31,6 +30,12 @@ class FeedViewController: UIViewController {
 return button
     }()
 
+    @objc private func buttonAction() {
+        let postViewController = PostViewController()
+        postViewController.titlePost = post.title
+        self.navigationController?.pushViewController(postViewController, animated: true)
+    }
+    
     private func setupButton() {
         self.view.addSubview(self.button)
         self.button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
@@ -38,17 +43,8 @@ return button
         self.button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         self.button.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-    
-    @objc private func buttonAction() {
-        let postViewController = PostViewController()
-        postViewController.titlePost = post.title
-        self.navigationController?.pushViewController(postViewController, animated: true)
-    }
+   
 }
 
-//extension FeedViewController {
-//  public static func main() {
-//  }
-//}
 
 
