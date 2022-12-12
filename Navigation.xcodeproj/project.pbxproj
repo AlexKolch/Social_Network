@@ -16,6 +16,7 @@
 		FC4063D32940810D008BBE60 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D22940810D008BBE60 /* PostViewController.swift */; };
 		FC4063D529409AEA008BBE60 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D429409AEA008BBE60 /* Post.swift */; };
 		FC4063D72940B952008BBE60 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D62940B952008BBE60 /* InfoViewController.swift */; };
+		FCEAF67029478BE40029E864 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEAF66F29478BE40029E864 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FC4063D22940810D008BBE60 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		FC4063D429409AEA008BBE60 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		FC4063D62940B952008BBE60 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		FCEAF66F29478BE40029E864 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				FC4063C7293F66E5008BBE60 /* LaunchScreen.storyboard */,
 				FC4063CA293F66E5008BBE60 /* Info.plist */,
 				FC4063D429409AEA008BBE60 /* Post.swift */,
+				FCEAF66F29478BE40029E864 /* Alert.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				FC4063D72940B952008BBE60 /* InfoViewController.swift in Sources */,
 				FC4063D529409AEA008BBE60 /* Post.swift in Sources */,
 				FC4063BF293F66E4008BBE60 /* SceneDelegate.swift in Sources */,
+				FCEAF67029478BE40029E864 /* Alert.swift in Sources */,
 				FC4063D32940810D008BBE60 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
