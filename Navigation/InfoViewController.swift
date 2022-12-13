@@ -15,7 +15,6 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         setupView()
 
-
         view.addSubview(button)
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         button.center = view.center
@@ -26,8 +25,16 @@ class InfoViewController: UIViewController {
         button.addTarget(self, action: #selector(buttonGo), for: .touchUpInside)
     }
     
-    @objc func buttonGo() {
-        showAlert()
+    @objc func buttonGo(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
+        
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
+                print("Ok")
+            })
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                print("Cancel")
+            })
+        self.present(alertController, animated: true)
     }
     
     private func setupView() {
@@ -36,28 +43,28 @@ class InfoViewController: UIViewController {
     }
 }
 
-extension InfoViewController {
-    func showAlert() {
-        let alertController = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
+//extension InfoViewController {
+//    func showAlert() {
         
-        present(alertController, animated: true) {
-            print("alert controller is presented")
+                                      
         //alertController.titlePost = info.title
         //self.navigationController?.pushViewController(alertController, animated: true)
 
-        let oneAction = UIAlertAction(title: "Ok", style: .default) { _ in
-            print("Ok")
-        }
-        alertController.addAction(oneAction)
+//        let oneAction = UIAlertAction(title: "Ok", style: .default) { _ in
+//            print("Ok")
+//        }
+      //  alertController.addAction(oneAction)
 
-        let twoAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            print("Cancel")
-        }
-        alertController.addAction(twoAction)
+//        let twoAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+//            print("Cancel")
+//        }
+//        alertController.addAction(twoAction)
+//
+//        }
        
-        }
-    }
-}
+            //print("alert controller is presented")
+
+    
     /////////////////// ВТОРОЙ СПОСОБ
 //    func showAlert() {
 //        let alert = UIAlertController(title: "Sign out?", message: "You can always access your content by signing back in",         preferredStyle: UIAlertController.Style.alert)
