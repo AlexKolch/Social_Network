@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController {
     private func setupView() {
         self.view = getRootView()
         self.view.addSubview(self.profileHeaderView)
+       // profileHeaderView.superview = 
     }
     
     override func viewWillLayoutSubviews() {
