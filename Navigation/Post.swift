@@ -11,7 +11,3 @@ struct Post {
     var title: String
 }
 
-struct Info {
-    var title: String
-}
-

@@ -8,23 +8,18 @@
 import UIKit
 
 class PostViewController: UIViewController {
-    var titlePost: String = ""
-    var info = Info(title: "Информация")
+    var titlePost: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
 
-        let myButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonItem))
-        navigationItem.rightBarButtonItem = myButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goInfo))
     }
     
-    @objc private func buttonItem() {
+    @objc private func goInfo() {
         let infoViewController = InfoViewController()
-        infoViewController.titleInfo = info.title
-        self.present(infoViewController, animated: true)
-        self.navigationController?.pushViewController(infoViewController, animated: true)
-        
+        navigationController?.present(infoViewController, animated: true)
     }
     
     func setupView() {

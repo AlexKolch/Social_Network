@@ -8,7 +8,7 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    var post = Post(title: "Мой пост")
+    private var post = Post(title: "Мой пост")
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class FeedViewController: UIViewController {
     }
     
     
-    var button: UIButton = {
+   lazy var button: UIButton = {
     let button = UIButton()
     button.backgroundColor = .systemYellow
     button.layer.cornerRadius = 24
