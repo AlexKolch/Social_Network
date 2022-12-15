@@ -13,8 +13,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .lightGray
-//        title = "Profile"
         setupView()
        
     }
@@ -22,7 +20,6 @@ class ProfileViewController: UIViewController {
     private func setupView() {
         self.view = getRootView()
         self.view.addSubview(self.profileHeaderView)
-       // profileHeaderView.superview = 
     }
     
     override func viewWillLayoutSubviews() {

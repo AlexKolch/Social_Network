@@ -8,17 +8,32 @@
 import Foundation
 import UIKit
 
-class ProfileHeaderView: UIView {
+final class ProfileHeaderView: UIView {
+    
+    // MARK: - Private Properties
     //let spiderLabel = UILabel()
+    let button = UIButton()
     var myTextField = UITextField()
     
-    private func setupTextField() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(setupTextField())
+        addSubview(spiderLabel())
+        addSubview(setupButton())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    private func setupTextField() -> UITextField {
         let textFieldFrame = CGRect(x: 250, y: 200, width: 200, height: 31)
-        
         myTextField = UITextField(frame: textFieldFrame)
         myTextField.textAlignment = .center
         myTextField.placeholder = "Waiting for something"
         myTextField.font = UIFont.boldSystemFont(ofSize: 14)
+        return myTextField
         
     }
     
@@ -32,7 +47,7 @@ class ProfileHeaderView: UIView {
         return spiderLabel
     }
     
-let button = UIButton()
+
     
     private func setupButton() -> UIButton {
         let button = UIButton(frame: CGRect(x: 50, y: 300, width: 600, height: 50))
