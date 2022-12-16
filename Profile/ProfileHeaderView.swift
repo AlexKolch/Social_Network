@@ -10,61 +10,71 @@ import UIKit
 
 final class ProfileHeaderView: UIView {
     
-    // MARK: - Private Properties
-    //let spiderLabel = UILabel()
-    let button = UIButton()
-    var myTextField = UITextField()
+    // MARK: - Properties
+    private var statusText: String = "Cowabunga!"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(setupTextField())
-        addSubview(spiderLabel())
-        addSubview(setupButton())
+        addSubview(profileTextField)
+        addSubview(profileSpiderLabel)
+        addSubview(profileButton)
+        addSubview(profileImageView)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    private func setupTextField() -> UITextField {
-        let textFieldFrame = CGRect(x: 250, y: 200, width: 200, height: 31)
-        myTextField = UITextField(frame: textFieldFrame)
-        myTextField.textAlignment = .center
-        myTextField.placeholder = "Waiting for something"
-        myTextField.font = UIFont.boldSystemFont(ofSize: 14)
-        return myTextField
-        
-    }
-    
-    private func spiderLabel() -> UILabel {
-        let spiderLabelFrame = CGRect(x: 0, y: 0, width: 200, height: 21)
-        let spiderLabel = UILabel(frame: spiderLabelFrame)
-        spiderLabel.center = CGPoint(x: 210, y: 100)
+    let profileSpiderLabel: UILabel = {
+        let spiderLabel = UILabel()
+        spiderLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 21)
+        spiderLabel.center = CGPoint(x: 230, y: 130)
         spiderLabel.textAlignment = .center
         spiderLabel.text = "Spider-man"
-        spiderLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        spiderLabel.font = UIFont.boldSystemFont(ofSize: 21)
         return spiderLabel
-    }
+    }()
     
-
+    let profileTextField: UITextField = {
+        let textField = UITextField()
+        textField.frame = CGRect(x: 139, y: 180, width: 200, height: 31)
+        textField.textAlignment = .center
+        textField.placeholder = "Waiting for something"
+        textField.font = UIFont.boldSystemFont(ofSize: 14)
+        return textField
+    }()
     
-    private func setupButton() -> UIButton {
-        let button = UIButton(frame: CGRect(x: 50, y: 300, width: 600, height: 50))
+    lazy var profileButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 20, y: 250, width: 350, height: 50)
+        button.translatesAutoresizingMaskIntoConstraints = true
         button.setTitle("Show status", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .blue
-        button.layer.cornerRadius = 4
-        
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 19
+        button.layer.shadowRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
-    }
+    }()
     
-    
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if let v = superview {
-            self.center = v.center
-        }
+    let profileImageView: UIImageView = {
+        let profileImage = UIImageView(frame: CGRect(x: 20, y: 105, width: 130, height: 130))
+        profileImage.layer.masksToBounds = true
+        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        profileImage.contentMode = .scaleAspectFit
+        profileImage.clipsToBounds = true
+        profileImage.layer.borderColor = UIColor.white.cgColor
+        profileImage.layer.borderWidth = 3
+        profileImage.translatesAutoresizingMaskIntoConstraints = true
+        profileImage.image = UIImage(named: "spider")
+        return profileImage
+    }()
+    // MARK: - UiView Life Cycle
+    @objc private func buttonPressed() {
+        print(statusText)
     }
 }
+

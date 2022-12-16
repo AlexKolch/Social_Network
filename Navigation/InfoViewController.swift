@@ -34,11 +34,11 @@ class InfoViewController: UIViewController {
         let okAction = UIAlertAction(title: "Ok", style: .cancel) { _ in
             self.dismiss(animated: true)
             print("Ok")
-            }
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default) { _ in
             self.dismiss(animated: true)
-                print("Cancel")
-            }
+            print("Cancel")
+        }
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true)

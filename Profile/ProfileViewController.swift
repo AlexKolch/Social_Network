@@ -9,21 +9,21 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    let profileHeaderView = ProfileHeaderView()
-    
+    var profileHeader = ProfileHeaderView()
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-       
-    }
-    
-    private func setupView() {
-        self.view = getRootView()
-        self.view.addSubview(self.profileHeaderView)
     }
     
     override func viewWillLayoutSubviews() {
-        profileHeaderView.frame = self.view.frame
+        super.viewWillLayoutSubviews()
+        profileHeader.frame = self.view.frame
+    }
+    // MARK: - Setup Settings
+    private func setupView() {
+        self.view = getRootView()
+        self.view.addSubview(profileHeader)
     }
     
     private func getRootView() -> UIView {
