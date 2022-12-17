@@ -1,9 +1,3 @@
-//
-//  ProfileHeaderView.swift
-//  Navigation
-//
-//  Created by Алексей Колыченков on 10.12.2022.
-//
 
 import Foundation
 import UIKit
@@ -11,7 +5,6 @@ import UIKit
 final class ProfileHeaderView: UIView {
     
     // MARK: - Properties
-    private var statusText: String = "Cowabunga!"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,9 +13,10 @@ final class ProfileHeaderView: UIView {
         addSubview(setStatusButton)
         addSubview(avatarImageView)
         addSubview(statusLabel)
+        addSubview(newButton)
         setConstraints()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -67,7 +61,6 @@ final class ProfileHeaderView: UIView {
         textField.backgroundColor = .white
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 1
-        
         return textField
     }()
     
@@ -82,15 +75,24 @@ final class ProfileHeaderView: UIView {
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-      //  button.addTarget(self, action: #selector(changeStatusButtonTapped), for: .touchUpInside)
         return button
     }()
-    // MARK: - UiView Life Cycle
-//    @objc private func buttonPressed() {
-//        print(statusText)
-//    }
+    
+    lazy var newButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("New post", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 19
+        button.layer.shadowRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        return button
+    }()
 }
-
+    
 // MARK: - Setup Settings
 extension ProfileHeaderView {
     
@@ -102,7 +104,7 @@ extension ProfileHeaderView {
             avatarImageView.heightAnchor.constraint(equalToConstant: 132),
             
             fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 18),
-            fullNameLabel.leadingAnchor.constraint(equalTo:  avatarImageView.trailingAnchor, constant: 16),
+            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
             fullNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
             statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 10),
@@ -117,12 +119,17 @@ extension ProfileHeaderView {
             setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 20),
             setStatusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -470),
             setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50)
+            setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
+            
+            newButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            newButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            newButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            
         ])
     }
 }
 
 
-    
+
 
 
