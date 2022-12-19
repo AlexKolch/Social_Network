@@ -12,7 +12,7 @@ class FeedViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Feed"
         view.backgroundColor = .white
         setupButton()
     }
