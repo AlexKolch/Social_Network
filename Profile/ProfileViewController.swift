@@ -1,9 +1,3 @@
-//
-//  Profile.swift
-//  Navigation
-//
-//  Created by Алексей Колыченков on 06.12.2022.
-//
 
 import UIKit
 
@@ -14,6 +8,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setConstraints()
     }
     
     override func viewWillLayoutSubviews() {
@@ -31,5 +26,14 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .lightGray
         title = "Profile"
         return view
+    }
+
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            profileHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            profileHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            profileHeader.heightAnchor.constraint(equalToConstant: 250)
+        ])
     }
 }
