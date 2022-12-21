@@ -43,12 +43,13 @@ final class ProfileHeaderView: UIView {
         let imageView = UIImageView(frame: CGRect(x: 20, y: 105, width: 130, height: 130))
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.frame.width / 2
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 3
         imageView.translatesAutoresizingMaskIntoConstraints = true
-        imageView.image = UIImage(systemName: "person.crop.circle.fill")
+        imageView.image = UIImage(named: "cat")
+        
         return imageView
     }()
     
@@ -118,12 +119,18 @@ extension ProfileHeaderView {
             
             setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 20),
             setStatusButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -470),
+
+            setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+
             setStatusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
             setStatusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
+
             
             newButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             newButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             newButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
+
         ])
     }
 }
