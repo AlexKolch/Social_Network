@@ -2,32 +2,21 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    
-    var profileHeader = ProfileHeaderView()
+    // MARK: - Private Properties
+    //var profileHeader = ProfileHeaderView()
+    lazy var profileHeader: ProfileHeaderView = {
+        let profileHeader = ProfileHeaderView()
+        profileHeader.translatesAutoresizingMaskIntoConstraints = false
+        return profileHeader
+    }()
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        view.addSubview(profileHeader)
         setConstraints()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        profileHeader.frame = self.view.frame
-    }
-    // MARK: - Setup Settings
-    private func setupView() {
-        self.view = getRootView()
-        self.view.addSubview(profileHeader)
-    }
-    
-    private func getRootView() -> UIView {
-        let view = UIView()
         view.backgroundColor = .lightGray
-        title = "Profile"
-        return view
     }
-
+    
     private func setConstraints() {
         NSLayoutConstraint.activate([
             profileHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -37,3 +26,5 @@ class ProfileViewController: UIViewController {
         ])
     }
 }
+    
+

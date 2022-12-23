@@ -26,7 +26,9 @@ final class LogInView: UIView {
         textField.placeholder = "Email or phone"
         textField.backgroundColor = .systemGray6
         textField.layer.borderWidth = 0.5
-        textField.layer.cornerRadius = 10
+        //textField.layer.cornerRadius = 10
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        textField.leftViewMode = .always
         textField.layer.borderColor = UIColor.lightGray.cgColor
         
         return textField
@@ -42,7 +44,9 @@ final class LogInView: UIView {
         textField.placeholder = "Password"
         textField.backgroundColor = .systemGray6
         textField.layer.borderWidth = 0.5
-        textField.layer.cornerRadius = 10
+        //textField.layer.cornerRadius = 10
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
+        textField.leftViewMode = .always
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.isSecureTextEntry = true
         

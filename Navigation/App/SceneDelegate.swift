@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func creatLoginViewController() -> UINavigationController {
         let loginViewController = UINavigationController(rootViewController: LogInViewController())
         loginViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 1)
-        loginViewController.navigationBar.isHidden = true
+        //loginViewController.navigationBar.isHidden = true
         return loginViewController
     }
 

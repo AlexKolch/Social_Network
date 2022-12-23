@@ -3,6 +3,15 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        //scrollView.addSubview(contentView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentSize = CGSize(width: .zero, height: UIScreen.main.bounds.height)
+        scrollView.keyboardDismissMode = .interactive
+        return scrollView
+    }()
+    
     let contentView: LogInView = {
         let contentView = LogInView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -11,14 +20,6 @@ class LogInViewController: UIViewController {
             action: #selector(buttonDidTapped),
             for: .touchUpInside)
         return contentView
-    }()
-    
-    let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentSize = CGSize(width: .zero, height: UIScreen.main.bounds.height)
-        scrollView.keyboardDismissMode = .interactive
-        return scrollView
     }()
     
     override func viewDidLoad() {
@@ -30,11 +31,13 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         addKeyboardNotifications()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
         removeKeyboardNotifications()
     }
     
@@ -75,7 +78,9 @@ class LogInViewController: UIViewController {
 
 extension LogInViewController {
     func setConstraints(){
+        //view.addSubview(scrollView)
         scrollView.addSubview(contentView)
+       
         scrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         scrollView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
