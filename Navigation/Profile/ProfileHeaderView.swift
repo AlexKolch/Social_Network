@@ -6,21 +6,6 @@ final class ProfileHeaderView: UIView {
     
     // MARK: - Properties
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(statusTextField)
-        addSubview(fullNameLabel)
-        addSubview(setStatusButton)
-        addSubview(avatarImageView)
-        addSubview(statusLabel)
-        addSubview(newButton)
-        setConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     let fullNameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -92,6 +77,21 @@ final class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         return button
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(statusTextField)
+        addSubview(fullNameLabel)
+        addSubview(setStatusButton)
+        addSubview(avatarImageView)
+        addSubview(statusLabel)
+        addSubview(newButton)
+        setConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
     
 // MARK: - Setup Settings
@@ -130,7 +130,6 @@ extension ProfileHeaderView {
             newButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             newButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             newButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
-
         ])
     }
 }
