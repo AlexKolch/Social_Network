@@ -15,10 +15,10 @@ struct Post {
     var likes: Int
     var views: Int
 
-    func arrayPosts() -> [Post] {
+    static func arrayPosts() -> [Post] {
         let posts = [
             Post(author: "Хелен Браун",
-                 description: "Кошка выбирает себе хозяина, и никак иначе."
+                 description: "Кошка выбирает себе хозяина, и никак иначе.",
                  image: "Cat3",
                  likes: 280,
                  views: 330),

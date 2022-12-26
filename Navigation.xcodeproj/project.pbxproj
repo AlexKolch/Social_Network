@@ -68,6 +68,7 @@
 		FC4063BB293F66E4008BBE60 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				FC9678B529599BF40027E37D /* Login */,
 				FCEAF66A2944B8030029E864 /* Profile */,
 				FC9678AF29520B890027E37D /* ViewControllers */,
 				FC9678B229520C1F0027E37D /* App */,
@@ -106,13 +107,20 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		FC9678B529599BF40027E37D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FC9678B3295216A20027E37D /* LogInView.swift */,
+				FC9678AD2952097C0027E37D /* LogInViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		FCEAF66A2944B8030029E864 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */,
 				FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */,
-				FC9678AD2952097C0027E37D /* LogInViewController.swift */,
-				FC9678B3295216A20027E37D /* LogInView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

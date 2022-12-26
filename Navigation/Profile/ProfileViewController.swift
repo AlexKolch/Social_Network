@@ -2,29 +2,55 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    // MARK: - Private Properties
-    //var profileHeader = ProfileHeaderView()
-    lazy var profileHeader: ProfileHeaderView = {
-        let profileHeader = ProfileHeaderView()
-        profileHeader.translatesAutoresizingMaskIntoConstraints = false
-        return profileHeader
+    let posts = Post.arrayPosts()
+
+    // MARK: - TableView
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: view.frame, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
+   // let identifire = "MyCell"
     // MARK: - View Life Cycle
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(profileHeader)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "default")
+        tableView.dataSource = self
+        tableView.delegate = self
+        view.addSubview(tableView)
         setConstraints()
-        view.backgroundColor = .lightGray
     }
-    
+}
+// MARK: - Extension Constraints
+extension ProfileViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            profileHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            profileHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            profileHeader.heightAnchor.constraint(equalToConstant: 250)
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
-    
+    // MARK: - UITableViewDataSource
+    extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return 4
+        }
+
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            //posts.count
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "default")
+            var content = cell.defaultContentConfiguration()
+            content.text
+            
+        }
+        // MARK: - UITableViewDelegate
+
+
+    }
+
 
