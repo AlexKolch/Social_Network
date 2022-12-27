@@ -5,8 +5,8 @@ class ProfileViewController: UIViewController {
     let posts = Post.arrayPosts()
 
     // MARK: - TableView
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: view.frame, style: .grouped)
+    let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -39,14 +39,14 @@ extension ProfileViewController {
         }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            //posts.count
+           return posts.count
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "default")
-            var content = cell.defaultContentConfiguration()
-            content.text
-            
+//            var content = cell.defaultContentConfiguration()
+//            content.text
+            return cell
         }
         // MARK: - UITableViewDelegate
 
