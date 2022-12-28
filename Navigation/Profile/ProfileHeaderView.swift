@@ -2,8 +2,8 @@
 import Foundation
 import UIKit
 
-final class ProfileHeaderView: UIView {
-    
+final class ProfileTableHederView: UITableViewHeaderFooterView {
+    static let identifier = "profileHeader"
     // MARK: - Properties
     
     let fullNameLabel: UILabel = {
@@ -78,8 +78,8 @@ final class ProfileHeaderView: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         addSubview(statusTextField)
         addSubview(fullNameLabel)
         addSubview(setStatusButton)
@@ -95,7 +95,7 @@ final class ProfileHeaderView: UIView {
 }
     
 // MARK: - Setup Settings
-extension ProfileHeaderView {
+extension ProfileTableHederView {
     
     private func setConstraints() {
         NSLayoutConstraint.activate([

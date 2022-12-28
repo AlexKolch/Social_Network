@@ -14,8 +14,10 @@ class ProfileViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "default")
+        tableView.register(ProfileTableHederView.self, forHeaderFooterViewReuseIdentifier: ProfileTableHederView.identifier)
         tableView.dataSource = self
         tableView.delegate = self
+
         view.addSubview(tableView)
         setConstraints()
     }
@@ -34,6 +36,10 @@ extension ProfileViewController {
     // MARK: - UITableViewDataSource
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHederView.identifier)
+        }
+
         func numberOfSections(in tableView: UITableView) -> Int {
             return 4
         }
@@ -48,9 +54,6 @@ extension ProfileViewController {
 //            content.text
             return cell
         }
-        // MARK: - UITableViewDelegate
-
-
     }
 
 
