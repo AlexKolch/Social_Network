@@ -14,8 +14,9 @@
 		FC4063C9293F66E5008BBE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4063C7293F66E5008BBE60 /* LaunchScreen.storyboard */; };
 		FC4063D1293F8D3A008BBE60 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */; };
 		FC4063D32940810D008BBE60 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D22940810D008BBE60 /* PostViewController.swift */; };
-		FC4063D529409AEA008BBE60 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D429409AEA008BBE60 /* Post.swift */; };
+		FC4063D529409AEA008BBE60 /* DataPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D429409AEA008BBE60 /* DataPost.swift */; };
 		FC4063D72940B952008BBE60 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D62940B952008BBE60 /* InfoViewController.swift */; };
+		FC4AB638295C6CAE00FE2AB2 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4AB637295C6CAE00FE2AB2 /* PostTableViewCell.swift */; };
 		FC9678AE2952097C0027E37D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9678AD2952097C0027E37D /* LogInViewController.swift */; };
 		FC9678B4295216A20027E37D /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9678B3295216A20027E37D /* LogInView.swift */; };
 		FCEAF66C2944B8180029E864 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */; };
@@ -31,8 +32,9 @@
 		FC4063CA293F66E5008BBE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FC4063D22940810D008BBE60 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		FC4063D429409AEA008BBE60 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FC4063D429409AEA008BBE60 /* DataPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPost.swift; sourceTree = "<group>"; };
 		FC4063D62940B952008BBE60 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		FC4AB637295C6CAE00FE2AB2 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		FC9678AD2952097C0027E37D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FC9678B3295216A20027E37D /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		FC4063BB293F66E4008BBE60 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				FC4AB636295C6C7100FE2AB2 /* Post */,
 				FC9678B529599BF40027E37D /* Login */,
 				FCEAF66A2944B8030029E864 /* Profile */,
 				FC9678AF29520B890027E37D /* ViewControllers */,
@@ -78,6 +81,14 @@
 				FC9678B129520BE50027E37D /* Models */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		FC4AB636295C6C7100FE2AB2 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				FC4AB637295C6CAE00FE2AB2 /* PostTableViewCell.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		FC9678AF29520B890027E37D /* ViewControllers */ = {
@@ -93,7 +104,7 @@
 		FC9678B129520BE50027E37D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FC4063D429409AEA008BBE60 /* Post.swift */,
+				FC4063D429409AEA008BBE60 /* DataPost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,12 +206,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC4AB638295C6CAE00FE2AB2 /* PostTableViewCell.swift in Sources */,
 				FC4063C1293F66E4008BBE60 /* FeedViewController.swift in Sources */,
 				FC4063D1293F8D3A008BBE60 /* ProfileViewController.swift in Sources */,
 				FC9678AE2952097C0027E37D /* LogInViewController.swift in Sources */,
 				FC4063BD293F66E4008BBE60 /* AppDelegate.swift in Sources */,
 				FC4063D72940B952008BBE60 /* InfoViewController.swift in Sources */,
-				FC4063D529409AEA008BBE60 /* Post.swift in Sources */,
+				FC4063D529409AEA008BBE60 /* DataPost.swift in Sources */,
 				FC4063BF293F66E4008BBE60 /* SceneDelegate.swift in Sources */,
 				FC4063D32940810D008BBE60 /* PostViewController.swift in Sources */,
 				FC9678B4295216A20027E37D /* LogInView.swift in Sources */,

@@ -7,32 +7,32 @@
 
 import Foundation
 
-struct Post {
-    //var title: String
+struct DataPost {
+
     var author: String
     var description: String
     var image: String
     var likes: Int
     var views: Int
 
-    static func arrayPosts() -> [Post] {
+    static func arrayPosts() -> [DataPost] {
         let posts = [
-            Post(author: "Хелен Браун",
+            DataPost(author: "Хелен Браун",
                  description: "Кошка выбирает себе хозяина, и никак иначе.",
                  image: "Cat3",
                  likes: 280,
                  views: 330),
-            Post(author: "Пол Грэй",
+            DataPost(author: "Пол Грэй",
                  description: "Любить кошку можно только на ее условиях.",
                  image: "Cat4",
                  likes: 24,
                  views: 100),
-            Post(author: "Уинстон Черчиль",
+            DataPost(author: "Уинстон Черчиль",
                  description: "Тот, кто не может понять свою кошку, не может понять вообще ничего.",
                  image: "Cat2",
                  likes: 7,
                  views: 30),
-            Post(author: "Эмиль-Огюст Шартье",
+            DataPost(author: "Эмиль-Огюст Шартье",
                  description: "С эстетической точки зрения, в мире существует только две идеальные вещи: часы и кошки.",
                  image: "Cat1",
                  likes: 50,

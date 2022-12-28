@@ -5,6 +5,20 @@ import UIKit
 final class ProfileTableHederView: UITableViewHeaderFooterView {
     static let identifier = "profileHeader"
     // MARK: - Properties
+
+    let avatarImageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: 20, y: 105, width: 130, height: 130))
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = imageView.frame.width / 2
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 3
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "cat")
+
+        return imageView
+    }()
     
     let fullNameLabel: UILabel = {
         let nameLabel = UILabel()
@@ -22,20 +36,6 @@ final class ProfileTableHederView: UITableViewHeaderFooterView {
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = .white
         return label
-    }()
-    
-    let avatarImageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 20, y: 105, width: 130, height: 130))
-        imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = imageView.frame.width / 2
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.borderColor = UIColor.white.cgColor
-        imageView.layer.borderWidth = 3
-        imageView.translatesAutoresizingMaskIntoConstraints = true
-        imageView.image = UIImage(named: "cat")
-        
-        return imageView
     }()
     
     let statusTextField: UITextField = {
@@ -80,12 +80,12 @@ final class ProfileTableHederView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        addSubview(statusTextField)
-        addSubview(fullNameLabel)
-        addSubview(setStatusButton)
-        addSubview(avatarImageView)
-        addSubview(statusLabel)
-        addSubview(newButton)
+        contentView.addSubview(statusTextField)
+        contentView.addSubview(fullNameLabel)
+        contentView.addSubview(setStatusButton)
+        contentView.addSubview(avatarImageView)
+        contentView.addSubview(statusLabel)
+        contentView.addSubview(newButton)
         setConstraints()
     }
     

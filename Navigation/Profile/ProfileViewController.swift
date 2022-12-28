@@ -2,7 +2,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    let posts = Post.arrayPosts()
+    let posts = DataPost.arrayPosts()
 
     // MARK: - TableView
     let tableView: UITableView = {
@@ -10,13 +10,15 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-   // let identifire = "MyCell"
+
     // MARK: - View Life Cycle
     override func viewDidLoad() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "default")
-        tableView.register(ProfileTableHederView.self, forHeaderFooterViewReuseIdentifier: ProfileTableHederView.identifier)
+
         tableView.dataSource = self
         tableView.delegate = self
+
+        tableView.register(ProfileTableHederView.self, forHeaderFooterViewReuseIdentifier: ProfileTableHederView.identifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "default")
 
         view.addSubview(tableView)
         setConstraints()
@@ -40,16 +42,21 @@ extension ProfileViewController {
             tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHederView.identifier)
         }
 
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 4
-        }
+//        func numberOfSections(in tableView: UITableView) -> Int {
+//            return 1
+//        }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return posts.count
+           posts.count
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "default")
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHederView.identifier) as! ProfileTableHederView
+//            header.statusLabel.text = posts[indexPath.item].author
+//            header.avatarImageView.image = UIImage(named: posts[indexPath.item].author)
+//            header.fullNameLabel.text = posts[indexPath.item].author
+
 //            var content = cell.defaultContentConfiguration()
 //            content.text
             return cell
