@@ -7,6 +7,7 @@ class ProfileViewController: UIViewController {
     // MARK: - TableView
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .systemGray3
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -18,7 +19,7 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
 
         tableView.register(ProfileTableHederView.self, forHeaderFooterViewReuseIdentifier: ProfileTableHederView.identifier)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "default")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
 
         view.addSubview(tableView)
         setConstraints()
@@ -35,7 +36,7 @@ extension ProfileViewController {
         ])
     }
 }
-    // MARK: - UITableViewDataSource
+    // MARK: - UITableViewDataSource, UITableViewDelegate
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -51,14 +52,17 @@ extension ProfileViewController {
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = UITableViewCell(style: .value1, reuseIdentifier: "default")
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHederView.identifier) as! ProfileTableHederView
-//            header.statusLabel.text = posts[indexPath.item].author
-//            header.avatarImageView.image = UIImage(named: posts[indexPath.item].author)
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as! PostTableViewCell
+            cell.authorPost.text = posts[indexPath.item].author
+            cell.postImageView.image = UIImage(named: posts[indexPath.item].image)
+            cell.postDescription.text = posts[indexPath.item].description
+            cell.likes.text = "Likes: \(posts[indexPath.item].likes)"
+            cell.view.text = "View: \(posts[indexPath.item].views)"
+//            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHederView.identifier) as! ProfileTableHederView
+//            header.statusLabel.text = posts[indexPath.item].description
+//            header.avatarImageView.image = UIImage(named: posts[indexPath.item].image)
 //            header.fullNameLabel.text = posts[indexPath.item].author
 
-//            var content = cell.defaultContentConfiguration()
-//            content.text
             return cell
         }
     }

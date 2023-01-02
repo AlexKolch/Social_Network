@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 final class ProfileTableHederView: UITableViewHeaderFooterView {
-    static let identifier = "profileHeader"
+    static let identifier = "profileHeaderID"
     // MARK: - Properties
 
     let avatarImageView: UIImageView = {
@@ -16,7 +16,6 @@ final class ProfileTableHederView: UITableViewHeaderFooterView {
         imageView.layer.borderWidth = 3
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "cat")
-
         return imageView
     }()
     

@@ -78,7 +78,7 @@ class LogInViewController: UIViewController {
 
 extension LogInViewController {
     func setConstraints(){
-        //view.addSubview(scrollView)
+        
         scrollView.addSubview(contentView)
        
         scrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true

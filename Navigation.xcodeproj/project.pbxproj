@@ -70,7 +70,7 @@
 		FC4063BB293F66E4008BBE60 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				FC4AB636295C6C7100FE2AB2 /* Post */,
+				FC4AB636295C6C7100FE2AB2 /* ViewPost */,
 				FC9678B529599BF40027E37D /* Login */,
 				FCEAF66A2944B8030029E864 /* Profile */,
 				FC9678AF29520B890027E37D /* ViewControllers */,
@@ -78,17 +78,17 @@
 				FC4063C5293F66E5008BBE60 /* Assets.xcassets */,
 				FC4063C7293F66E5008BBE60 /* LaunchScreen.storyboard */,
 				FC4063CA293F66E5008BBE60 /* Info.plist */,
-				FC9678B129520BE50027E37D /* Models */,
+				FC9678B129520BE50027E37D /* ModelPost */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		FC4AB636295C6C7100FE2AB2 /* Post */ = {
+		FC4AB636295C6C7100FE2AB2 /* ViewPost */ = {
 			isa = PBXGroup;
 			children = (
 				FC4AB637295C6CAE00FE2AB2 /* PostTableViewCell.swift */,
 			);
-			path = Post;
+			path = ViewPost;
 			sourceTree = "<group>";
 		};
 		FC9678AF29520B890027E37D /* ViewControllers */ = {
@@ -101,12 +101,12 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		FC9678B129520BE50027E37D /* Models */ = {
+		FC9678B129520BE50027E37D /* ModelPost */ = {
 			isa = PBXGroup;
 			children = (
 				FC4063D429409AEA008BBE60 /* DataPost.swift */,
 			);
-			path = Models;
+			path = ModelPost;
 			sourceTree = "<group>";
 		};
 		FC9678B229520C1F0027E37D /* App */ = {
