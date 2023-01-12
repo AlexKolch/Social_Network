@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
 
-        tableView.register(ProfileTableHederView.self, forHeaderFooterViewReuseIdentifier: ProfileTableHederView.identifier)
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifier)
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
 
         view.addSubview(tableView)
@@ -40,12 +40,8 @@ extension ProfileViewController {
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHederView.identifier)
+            tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifier)
         }
-
-//        func numberOfSections(in tableView: UITableView) -> Int {
-//            return 1
-//        }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            posts.count
@@ -58,11 +54,6 @@ extension ProfileViewController {
             cell.postDescription.text = posts[indexPath.item].description
             cell.likes.text = "Likes: \(posts[indexPath.item].likes)"
             cell.view.text = "View: \(posts[indexPath.item].views)"
-//            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHederView.identifier) as! ProfileTableHederView
-//            header.statusLabel.text = posts[indexPath.item].description
-//            header.avatarImageView.image = UIImage(named: posts[indexPath.item].image)
-//            header.fullNameLabel.text = posts[indexPath.item].author
-
             return cell
         }
     }

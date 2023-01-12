@@ -75,9 +75,11 @@ class PostTableViewCell: UITableViewCell {
             postImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             postImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             postImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            postImageView.heightAnchor.constraint(equalTo: widthAnchor),
 
             postDescription.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
             postDescription.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            postDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
 
             likes.topAnchor.constraint(equalTo: postDescription.bottomAnchor, constant: 16),
             likes.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -88,6 +90,5 @@ class PostTableViewCell: UITableViewCell {
             view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
-
 }
 
