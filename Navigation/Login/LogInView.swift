@@ -15,6 +15,19 @@ final class LogInView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
+    var loginStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.layer.borderColor = UIColor.lightGray.cgColor
+        stackView.layer.borderWidth = 0.5
+        stackView.layer.cornerRadius = 10
+        stackView.distribution = .fillProportionally
+        stackView.backgroundColor = .systemGray6
+        stackView.clipsToBounds = true
+        return stackView
+    }()
     
     let loginTextField: UITextField = {
         let textField = UITextField()
@@ -69,9 +82,12 @@ final class LogInView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(logoImageView)
-        addSubview(loginTextField)
-        addSubview(passwordTextField)
+        addSubview(loginStackView)
+//        addSubview(loginTextField)
+//        addSubview(passwordTextField)
         addSubview(logInButton)
+        loginStackView.addArrangedSubview(loginTextField)
+        loginStackView.addArrangedSubview(passwordTextField)
         setConstraints()
     }
     

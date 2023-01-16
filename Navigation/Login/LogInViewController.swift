@@ -15,10 +15,6 @@ class LogInViewController: UIViewController {
     let contentView: LogInView = {
         let contentView = LogInView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.logInButton.addTarget(
-            LogInViewController.self,
-            action: #selector(buttonDidTapped),
-            for: .touchUpInside)
         return contentView
     }()
     
@@ -26,6 +22,10 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.view.addSubview(scrollView)
+        contentView.logInButton.addTarget(
+            self,
+            action: #selector(buttonDidTapped),
+            for: .touchUpInside)
         setConstraints()
     }
     
@@ -78,7 +78,7 @@ class LogInViewController: UIViewController {
 
 extension LogInViewController {
     func setConstraints(){
-        //view.addSubview(scrollView)
+        
         scrollView.addSubview(contentView)
        
         scrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
