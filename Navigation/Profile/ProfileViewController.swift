@@ -2,7 +2,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    let posts = DataPost.arrayPosts()
+    private let posts = DataPost.arrayPosts()
 
     // MARK: - TableView
     let tableView: UITableView = {
@@ -44,15 +44,25 @@ extension ProfileViewController {
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifier)
+            guard section == 0 else { return nil }
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifier)
+            return headerView
         }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             switch section {
+            case 0: return 1
+            default: return posts.count
+            }
+        }
+
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            switch indexPath.section {
             case 0:
-                return 1
+                tableView.deselectRow(at: indexPath, animated: false)
+                navigationController?.pushViewController(PhotosViewController(), animated: true)
             default:
-                return posts.count
+                tableView.deselectRow(at: indexPath, animated: true)
             }
         }
 
@@ -62,13 +72,10 @@ extension ProfileViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
                 return cell
             default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as! PostTableViewCell
-            cell.authorPost.text = posts[indexPath.item].author
-            cell.postImageView.image = UIImage(named: posts[indexPath.item].image)
-            cell.postDescription.text = posts[indexPath.item].description
-            cell.likes.text = "Likes: \(posts[indexPath.item].likes)"
-            cell.view.text = "View: \(posts[indexPath.item].views)"
-            return cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as! PostTableViewCell
+                let post = posts[indexPath.row]
+                cell.setupCell(with: post)
+                return cell
         }
     }
 }

@@ -65,6 +65,14 @@ class PostTableViewCell: UITableViewCell {
         setConstraints()
     }
 
+    func setupCell(with post: DataPost) {
+        authorPost.text = post.author
+        postImageView.image = UIImage(named: post.image)
+        postDescription.text = post.description
+        likes.text = "Views: \(post.views)"
+        view.text = "Likes: \(post.likes)"
+    }
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             authorPost.topAnchor.constraint(equalTo: topAnchor, constant: 16),

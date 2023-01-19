@@ -1,7 +1,7 @@
 
 import UIKit
 
-class PhotosTableViewCell: UITableViewCell  {
+final class PhotosTableViewCell: UITableViewCell  {
     static let identifier = "photoTableVCell"
     private let photos = DataPhoto.identifier.photos
     
