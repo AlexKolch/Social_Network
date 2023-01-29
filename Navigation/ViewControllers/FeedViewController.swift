@@ -32,7 +32,6 @@ return button
 
     @objc private func buttonAction() {
         let postViewController = PostViewController()
-       // postViewController.titlePost = post.title
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
     
