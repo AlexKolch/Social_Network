@@ -9,7 +9,7 @@ import UIKit
 
 class PhotosViewController: UIViewController {
 
-    private let photos = DataPhoto.identifier.photos
+    private let photos = DataPhoto.shared.photos
 
     private var photosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

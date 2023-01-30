@@ -3,7 +3,7 @@ import UIKit
 
 final class PhotosTableViewCell: UITableViewCell  {
     static let identifier = "photoTableVCell"
-    private let photos = DataPhoto.identifier.photos
+    private let photos = DataPhoto.shared.photos
     
     private let photoLabel: UILabel = {
         let labelView = UILabel()

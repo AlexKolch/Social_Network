@@ -2,7 +2,9 @@
 import Foundation
 
 struct DataPhoto {
-    static let identifier = DataPhoto()
+    static let shared = DataPhoto()
+
+    private init () {}
 
     let photos = [
         "p1",

@@ -24,6 +24,7 @@
 		FC9705F22975697A00D5D5C7 /* Extension UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F12975697A00D5D5C7 /* Extension UIView.swift */; };
 		FC9705F429757AE000D5D5C7 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F329757AE000D5D5C7 /* PhotosViewController.swift */; };
 		FC9705F62979A2A200D5D5C7 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F52979A2A200D5D5C7 /* PhotosCollectionViewCell.swift */; };
+		FC9705F82986C72300D5D5C7 /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F72986C72300D5D5C7 /* DataUser.swift */; };
 		FCEAF66C2944B8180029E864 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		FC9705F12975697A00D5D5C7 /* Extension UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIView.swift"; sourceTree = "<group>"; };
 		FC9705F329757AE000D5D5C7 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		FC9705F52979A2A200D5D5C7 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC9705F72986C72300D5D5C7 /* DataUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUser.swift; sourceTree = "<group>"; };
 		FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 			children = (
 				FC9705EE29755B8C00D5D5C7 /* DataPhoto.swift */,
 				FC4063D429409AEA008BBE60 /* DataPost.swift */,
+				FC9705F72986C72300D5D5C7 /* DataUser.swift */,
 			);
 			path = ModelPost;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				FC4063D32940810D008BBE60 /* PostViewController.swift in Sources */,
 				FC9678B4295216A20027E37D /* LogInView.swift in Sources */,
 				FCEAF66C2944B8180029E864 /* ProfileHeaderView.swift in Sources */,
+				FC9705F82986C72300D5D5C7 /* DataUser.swift in Sources */,
 				FC9705F62979A2A200D5D5C7 /* PhotosCollectionViewCell.swift in Sources */,
 				FC9705EF29755B8C00D5D5C7 /* DataPhoto.swift in Sources */,
 				FC9705F22975697A00D5D5C7 /* Extension UIView.swift in Sources */,

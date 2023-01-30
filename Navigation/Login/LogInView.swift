@@ -43,7 +43,8 @@ final class LogInView: UIView {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
         textField.layer.borderColor = UIColor.lightGray.cgColor
-        
+        textField.tag = 1
+        textField.addTarget(self, action: #selector(tfWasChanget), for: .editingChanged)
         return textField
     }()
     
@@ -62,8 +63,19 @@ final class LogInView: UIView {
         textField.leftViewMode = .always
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.isSecureTextEntry = true
-        
+        textField.tag = 2
+        textField.addTarget(self, action: #selector(tfWasChanget), for: .editingChanged)
         return textField
+    }()
+
+    let hiddenLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Количество символов меньше 4"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .red
+        label.isHidden = true
+        return label
     }()
     
     let logInButton: UIButton = {
@@ -75,17 +87,12 @@ final class LogInView: UIView {
         button.backgroundColor = UIColor(named: "MyColor")
         button.setImage(UIImage(named: "blue_pixel"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
        return button
     }()
-    
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(logoImageView)
-        addSubview(loginStackView)
-//        addSubview(loginTextField)
-//        addSubview(passwordTextField)
-        addSubview(logInButton)
+        addSubviews(logoImageView, loginStackView, logInButton, hiddenLabel)
         loginStackView.addArrangedSubview(loginTextField)
         loginStackView.addArrangedSubview(passwordTextField)
         setConstraints()
@@ -94,6 +101,18 @@ final class LogInView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    @objc func tfWasChanget(_ textField: UITextField){
+        let textCount = textField.text?.count
+        if let tc = textCount {
+            if tc < 4 {
+                hiddenLabel.isHidden = false
+            } else {
+                hiddenLabel.isHidden = true
+            }
+        }
+    }
+
 }
 // MARK: - Constraints
 extension LogInView {
@@ -114,11 +133,25 @@ extension LogInView {
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
 
-            
-            logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
+            hiddenLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 8),
+            hiddenLabel.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
+
+            logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 34),
             logInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             logInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             logInButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+}
+// MARK: - extension ShakeTextField
+extension UITextField {
+    func shakeTF(){
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = 0.05
+        shakeAnimation.repeatCount = 6
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = CGPoint(x: self.center.x - 4, y: self.center.y)
+        shakeAnimation.toValue = CGPoint(x: self.center.x + 4, y: self.center.y)
+        layer.add(shakeAnimation, forKey: "position")
     }
 }
