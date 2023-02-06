@@ -114,7 +114,7 @@ final class LogInView: UIView {
     }
 
 }
-// MARK: - Constraints
+    // MARK: - Constraints
 extension LogInView {
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -143,7 +143,7 @@ extension LogInView {
         ])
     }
 }
-// MARK: - extension ShakeTextField
+    // MARK: - ShakeTextField
 extension UITextField {
     func shakeTF(){
         let shakeAnimation = CABasicAnimation(keyPath: "position")
@@ -153,5 +153,18 @@ extension UITextField {
         shakeAnimation.fromValue = CGPoint(x: self.center.x - 4, y: self.center.y)
         shakeAnimation.toValue = CGPoint(x: self.center.x + 4, y: self.center.y)
         layer.add(shakeAnimation, forKey: "position")
+    }
+
+    func shake(for duration: TimeInterval = 0.5,
+               withTranslation translation: CGFloat = 10) {
+        let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.3) {
+            self.transform = CGAffineTransform(translationX: translation, y: 0)
+        }
+
+        propertyAnimator.addAnimations({
+            self.transform = CGAffineTransform(translationX: 0, y: 0)
+        }, delayFactor: 0.2)
+
+        propertyAnimator.startAnimation()
     }
 }

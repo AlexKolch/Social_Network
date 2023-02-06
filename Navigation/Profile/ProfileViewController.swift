@@ -2,7 +2,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    private let posts = DataPost.arrayPosts()
+    private var posts = DataPost.arrayPosts()
 
     // MARK: - TableView
     let tableView: UITableView = {
@@ -25,8 +25,12 @@ class ProfileViewController: UIViewController {
         view.addSubview(tableView)
         setConstraints()           
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 }
-// MARK: - Extension Constraints
+    // MARK: - Extension Constraints
 extension ProfileViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -39,6 +43,7 @@ extension ProfileViewController {
 }
     // MARK: - UITableViewDataSource, UITableViewDelegate
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+
         func numberOfSections(in tableView: UITableView) -> Int {
             2
         }
@@ -54,6 +59,15 @@ extension ProfileViewController {
             case 0: return 1
             default: return posts.count
             }
+        }
+
+
+        func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _,_,_ in
+                self.posts.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+            }
+            return UISwipeActionsConfiguration(actions: [deleteAction])
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

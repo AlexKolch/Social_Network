@@ -3,7 +3,7 @@ import UIKit
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
   let user = DataUser.setupUser
-// MARK: - UIScrollView
+    // MARK: - UIScrollView
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.addSubview(contentView)
@@ -24,7 +24,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             for: .touchUpInside)
         return contentView
     }()
-// MARK: - View Life Cycle
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.loginTextField.delegate = self
@@ -46,7 +46,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.isHidden = false
         removeKeyboardNotifications()
     }
-// MARK: - KeyboardNotifications
+    // MARK: - KeyboardNotifications
     func addKeyboardNotifications() {
         NotificationCenter.default.addObserver(
             self,
@@ -131,6 +131,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         textField.shakeTF()
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 1 {
+            textField.shakeTF()
+        } else {
+            textField.shakeTF()
+        }
+        return true
+    }
+
     private func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
@@ -151,10 +160,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
 }
-// MARK: - extension Constraints
+    // MARK: - Constraints
 extension LogInViewController {
-    func setConstraints(){
-       
+    func setConstraints() {
         scrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         scrollView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -164,17 +172,5 @@ extension LogInViewController {
         contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-    }
-}
-// MARK: - extension
-extension LogInViewController {
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.tag == 1 {
-            textField.shakeTF()
-        } else {
-            textField.shakeTF()
-        }
-        return false
     }
 }
