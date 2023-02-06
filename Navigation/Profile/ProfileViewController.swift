@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
     private let posts = DataPost.arrayPosts()
 
     // MARK: - TableView
@@ -25,8 +25,12 @@ class ProfileViewController: UIViewController {
         view.addSubview(tableView)
         setConstraints()           
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 }
-// MARK: - Extension Constraints
+    // MARK: - Extension Constraints
 extension ProfileViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
