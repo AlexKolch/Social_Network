@@ -16,7 +16,6 @@ class FeedViewController: UIViewController {
         setupButton()
     }
     
-    
     lazy var button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemYellow

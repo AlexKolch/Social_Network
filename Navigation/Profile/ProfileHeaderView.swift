@@ -3,12 +3,14 @@ import Foundation
 import UIKit
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
+
     static let identifier = "profileHeaderID"
     let user = DataUser.setupUser()
+
     // MARK: - Properties
     private var avatarStartPoint = CGPoint()
 
-   var avatarImageView: UIImageView = {
+    lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 132, height: 132))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
@@ -17,7 +19,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         imageView.clipsToBounds = true
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 3
-        imageView.image = UIImage(named: "cat")
+        imageView.isUserInteractionEnabled = true
+        imageView.image = UIImage(named: user.image)
         return imageView
     }()
 
@@ -31,12 +34,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             )
         )
         view.backgroundColor = .darkGray
-        view.isHidden = true
         view.alpha = 0
         return view
     }()
 
-    private lazy var backButton: UIButton = {
+    lazy var backButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.alpha = 0
@@ -44,24 +46,23 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         button.tintColor = .black
         button.contentMode = .scaleToFill
         button.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
-//        button.isUserInteractionEnabled = false
         button.addTarget(self, action: #selector(backButtonDidTapped), for: .touchUpInside)
         return button
     }()
     
-    let fullNameLabel: UILabel = {
+    lazy var fullNameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.text = "Hipster Cat"
+        nameLabel.text = user.fullName
         nameLabel.font = UIFont.boldSystemFont(ofSize: 21)
         nameLabel.textColor = .black
         return nameLabel
     }()
     
-    let statusLabel: UILabel = {
+    lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Status"
+        label.text = user.status
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .gray
         return label
@@ -96,22 +97,21 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         button.addTarget(self, action: #selector(changeStatusButtonTapped), for: .touchUpInside)
         return button
     }()
-    
+    // MARK: - init
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        contentView.layer.cornerRadius = 10
-        contentView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        contentView.layer.shadowOffset = CGSize(width: 4, height: 4)
         contentView.addSubviews(
-            avatarImageView,
-            avatarBackground,
-            backButton,
             fullNameLabel,
             statusLabel,
             statusTextField,
-            setStatusButton
+            setStatusButton,
+            avatarBackground,
+            avatarImageView,
+            backButton
         )
         setConstraints()
-        imageGestureSettings(imageView: avatarImageView)
+        imageGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -136,33 +136,23 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         alert.addAction(okAction)
         rootVC.present(alert, animated: true)
     }
-}
-    
     // MARK: - GestureSettings
-extension ProfileHeaderView {
-
-    private func imageGestureSettings(imageView: UIImageView){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarDidTapped))
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.numberOfTouchesRequired = 1
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGesture)
+    private func imageGesture(){
+        let tapGestureImage = UITapGestureRecognizer(target: self, action: #selector(avatarDidTapped))
+        tapGestureImage.numberOfTapsRequired = 1
+        tapGestureImage.numberOfTouchesRequired = 1
+        avatarImageView.addGestureRecognizer(tapGestureImage)
     }
-    
-    @objc private func avatarDidTapped(){
-        avatarStartPoint = avatarImageView.center
-        self.avatarImageView.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.5) {
-            //            self.avatarImageView.center.y = UIScreen.main.bounds.height/2
-            //            self.avatarImageView.center.x = UIScreen.main.bounds.width/2
-            self.avatarImageView.center = CGPoint(x: UIScreen.main.bounds.midX,
-                                                  y: UIScreen.main.bounds.midY)  //на центр экрана
-            self.avatarImageView.transform = CGAffineTransform(scaleX: 4, y: 4)
-            self.avatarImageView.layer.cornerRadius = 0
-            self.avatarBackground.isHidden = false
-            self.avatarBackground.alpha = 0.9
-            // self.avatarBackground.addSubview(self.avatarImageView)
 
+    @objc private func avatarDidTapped(){
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut) {
+            self.avatarStartPoint = self.avatarImageView.center
+            self.avatarBackground.alpha = 0.9
+            self.avatarImageView.layer.bounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width) //трансформация
+            self.avatarImageView.center = CGPoint(x: self.avatarBackground.center.x, y: self.avatarBackground.center.y - 55) //перемещение
+            self.avatarImageView.layer.cornerRadius = 0
+            self.avatarImageView.layer.borderWidth = 0
+            self.layoutIfNeeded()
         } completion: { _ in
             UIView.animate(withDuration: 0.3) {
                 self.backButton.alpha = 1
@@ -170,15 +160,28 @@ extension ProfileHeaderView {
         }
     }
 
-    @objc private func backButtonDidTapped(){
-        UIImageView.animate(withDuration: 0.2) {
+    @objc private func backButtonDidTapped() {
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .curveEaseInOut) {
             self.backButton.alpha = 0
-            self.avatarBackground.alpha = 0
+        } completion: { _ in
+            self.avatarBackground.alpha = 0.0
+            self.avatarImageView.layer.borderWidth = 3
+            //self.avatarImageView.layer.position = self.avatarStartPoint
             self.avatarImageView.center = self.avatarStartPoint
-            self.avatarImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.width / 2
+            self.avatarImageView.layer.bounds = CGRect(x: 0, y: 0, width: 120, height: 120)
+            self.avatarImageView.layer.cornerRadius = self.avatarImageView.bounds.width / 2
+            self.layoutIfNeeded()
         }
+//        UIImageView.animate(withDuration: 0.2) {
+//            self.backButton.alpha = 0
+//            self.avatarBackground.alpha = 0
+//            self.avatarImageView.center = self.avatarStartPoint
+//            self.avatarImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+//            self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.width / 2
+//        }
     }
+}
+extension ProfileHeaderView {
     // MARK: - Constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -245,4 +248,27 @@ extension ProfileHeaderView {
     @unknown default:
         fatalError()
     }
-}*/
+}
+
+///////////////////////
+
+ avatarStartPoint = avatarImageView.center
+ self.avatarImageView.isUserInteractionEnabled = false
+ UIView.animate(withDuration: 0.5) {
+     //            self.avatarImageView.center.y = UIScreen.main.bounds.height/2
+     //            self.avatarImageView.center.x = UIScreen.main.bounds.width/2
+     self.avatarImageView.center = CGPoint(x: UIScreen.main.bounds.midX,
+                                           y: UIScreen.main.bounds.midY)  //на центр экрана
+     self.avatarImageView.transform = CGAffineTransform(scaleX: 4, y: 4)
+     self.avatarImageView.layer.cornerRadius = 0
+     self.avatarBackground.isHidden = false
+     self.avatarBackground.alpha = 0.9
+     // self.avatarBackground.addSubview(self.avatarImageView)
+
+ } completion: { _ in
+     UIView.animate(withDuration: 0.3) {
+         self.backButton.alpha = 1
+     }
+ }
+
+ */

@@ -23,10 +23,15 @@ class ProfileViewController: UIViewController {
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
 
         view.addSubview(tableView)
-        setConstraints()           
+        setConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        setupNavigationBar()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.reloadData()
     }
 }
@@ -39,6 +44,20 @@ extension ProfileViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+
+    func setupNavigationBar() {
+        title = "Profile"
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.backgroundColor = .systemBlue
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+        navigationItem.hidesBackButton = true
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+
     }
 }
     // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -74,7 +93,7 @@ extension ProfileViewController {
             switch indexPath.section {
             case 0:
                 tableView.deselectRow(at: indexPath, animated: false)
-                navigationController?.pushViewController(PhotosViewController(), animated: true)
+                navigationController?.pushViewController(CollectionViewController(), animated: true)
             default:
                 tableView.deselectRow(at: indexPath, animated: true)
             }

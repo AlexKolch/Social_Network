@@ -29,7 +29,7 @@ final class LogInView: UIView {
         return stackView
     }()
     
-    let loginTextField: UITextField = {
+    lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.masksToBounds = true
@@ -39,7 +39,6 @@ final class LogInView: UIView {
         textField.placeholder = "Email or phone"
         textField.backgroundColor = .systemGray6
         textField.layer.borderWidth = 0.5
-        //textField.layer.cornerRadius = 10
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
         textField.layer.borderColor = UIColor.lightGray.cgColor
@@ -48,7 +47,7 @@ final class LogInView: UIView {
         return textField
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.masksToBounds = true
@@ -58,7 +57,6 @@ final class LogInView: UIView {
         textField.placeholder = "Password"
         textField.backgroundColor = .systemGray6
         textField.layer.borderWidth = 0.5
-        //textField.layer.cornerRadius = 10
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
         textField.layer.borderColor = UIColor.lightGray.cgColor

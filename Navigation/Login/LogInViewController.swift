@@ -15,7 +15,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return scrollView
     }()
     
-    let contentView: LogInView = {
+    private lazy var contentView: LogInView = {
         let contentView = LogInView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.logInButton.addTarget(
@@ -31,7 +31,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         contentView.passwordTextField.delegate = self
 
         self.view.addSubview(scrollView)
-
         setConstraints()
     }
     
@@ -75,14 +74,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillHide(_ notification: NSNotification) {
         scrollView.contentOffset = .zero
     }
-    
+    // MARK: - func
     @objc func buttonDidTapped() {
         let profileViewController = ProfileViewController()
         guard let loginValue = contentView.loginTextField.text else {return}
         guard let password = contentView.passwordTextField.text else {return}
 
-        if user().password == password && (user().email == loginValue || user().phone == loginValue) &&
-            isValidEmail(loginValue) {
+        if user().password == password && (user().email == loginValue || user().phone == loginValue) && isValidEmail(email: loginValue) {
 //            contentView.loginTextField.text = "siliconCat@mail.ru"
 //            contentView.loginTextField.text = "89997654321"
 //            contentView.passwordTextField.text = "password"
@@ -140,12 +138,28 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    private func isValidEmail(_ email: String) -> Bool {
+    private func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-    
+}
+    // MARK: - Constraints
+extension LogInViewController {
+    func setConstraints() {
+        scrollView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
+        scrollView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor).isActive = true
+        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 100).isActive = true
+    }
+}
+    // MARK: - KeyboardSettings
+extension LogInViewController {
     func setKeyboardSettings(UITextField textField: UITextField){
         textField.delegate = self
         textField.keyboardAppearance = .default
@@ -155,22 +169,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let tapOnView = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapOnView)
     }
-    
+
     @objc func dismissKeyboard(){
         view.endEditing(true)
-    }
-}
-    // MARK: - Constraints
-extension LogInViewController {
-    func setConstraints() {
-        scrollView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        scrollView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor).isActive = true
-        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
     }
 }

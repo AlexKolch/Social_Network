@@ -58,9 +58,7 @@ extension CollectionViewController {
 
     private func setupNavigationBar() {
         title = "Photo Gallery"
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.backgroundColor = .systemGray
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .white
 
     }
 }
