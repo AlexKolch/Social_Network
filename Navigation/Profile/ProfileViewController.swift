@@ -1,8 +1,7 @@
-
 import UIKit
 
-class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
-    private let posts = DataPost.arrayPosts()
+class ProfileViewController: UIViewController {
+    private var posts = DataPost.arrayPosts()
 
     // MARK: - TableView
     let tableView: UITableView = {
@@ -23,10 +22,15 @@ class ProfileViewController: UIViewController, UIGestureRecognizerDelegate {
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
 
         view.addSubview(tableView)
-        setConstraints()           
+        setConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        setupNavigationBar()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.reloadData()
     }
 }
@@ -40,9 +44,24 @@ extension ProfileViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+
+    func setupNavigationBar() {
+        title = "Profile"
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.backgroundColor = .systemBlue
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+        navigationItem.hidesBackButton = true
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+
+    }
 }
     // MARK: - UITableViewDataSource, UITableViewDelegate
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+
         func numberOfSections(in tableView: UITableView) -> Int {
             2
         }
@@ -58,6 +77,15 @@ extension ProfileViewController {
             case 0: return 1
             default: return posts.count
             }
+        }
+
+
+        func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _,_,_ in
+                self.posts.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+            }
+            return UISwipeActionsConfiguration(actions: [deleteAction])
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
