@@ -8,37 +8,37 @@
 import Foundation
 
 struct DataPost {
-
-    var author: String
+    var author: DataUser
     var description: String
     var image: String
     var likes: Int
     var views: Int
+}
 
-    static func arrayPosts() -> [DataPost] {
-        let posts = [
-            DataPost(author: "Хелен Браун",
+final class Posts {
+    static let shared: Posts = .init()
+
+    var posts: [DataPost] = [
+        DataPost(author: DataUser.setupUser(),
                  description: "Кошка выбирает себе хозяина, и никак иначе.",
                  image: "Cat3",
                  likes: 280,
                  views: 330),
-            DataPost(author: "Пол Грэй",
+        DataPost(author: DataUser.setupUser(),
                  description: "Любить кошку можно только на ее условиях.",
                  image: "Cat4",
                  likes: 24,
                  views: 100),
-            DataPost(author: "Уинстон Черчиль",
+        DataPost(author: DataUser.setupUser(),
                  description: "Тот, кто не может понять свою кошку, не может понять вообще ничего.",
                  image: "Cat2",
                  likes: 7,
                  views: 30),
-            DataPost(author: "Эмиль-Огюст Шартье",
+        DataPost(author: DataUser.setupUser(),
                  description: "С эстетической точки зрения, в мире существует только две идеальные вещи: часы и кошки.",
                  image: "Cat1",
                  likes: 50,
                  views: 234)
-        ]
-        return posts
-    }
+    ]
 }
 

@@ -2,8 +2,6 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    private var posts = DataPost.arrayPosts()
-
     // MARK: - TableView
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -76,14 +74,14 @@ extension ProfileViewController {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             switch section {
             case 0: return 1
-            default: return posts.count
+            default: return Posts.shared.posts.count
             }
         }
 
 
         func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _,_,_ in
-                self.posts.remove(at: indexPath.row)
+                Posts.shared.posts.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
             }
             return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -106,8 +104,7 @@ extension ProfileViewController {
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as! PostTableViewCell
-                let post = posts[indexPath.row]
-                cell.setupCell(with: post)
+                cell.setupCell(with: indexPath.row)
                 return cell
         }
     }

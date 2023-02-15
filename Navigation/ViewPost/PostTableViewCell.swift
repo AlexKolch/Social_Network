@@ -9,6 +9,7 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     static let identifier = "postTableViewCellID"
+    private var index = 0
 
     let authorPost: UILabel = {
         let authorPost = UILabel()
@@ -43,6 +44,8 @@ class PostTableViewCell: UITableViewCell {
         likes.font = .systemFont(ofSize: 16)
         likes.numberOfLines = 1
         likes.translatesAutoresizingMaskIntoConstraints = false
+        likes.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: PostTableViewCell.self, action: #selector(addLikes))
         return likes
     }()
 
@@ -65,12 +68,17 @@ class PostTableViewCell: UITableViewCell {
         setConstraints()
     }
 
-    func setupCell(with post: DataPost) {
-        authorPost.text = post.author
-        postImageView.image = UIImage(named: post.image)
-        postDescription.text = post.description
-        likes.text = "Views: \(post.views)"
-        view.text = "Likes: \(post.likes)"
+    func setupCell(with index: Int) {
+        self.index = index
+
+        authorPost.text = Posts.shared.posts[index].author.fullName
+        postImageView.image = UIImage(named: Posts.shared.posts[index].image)
+        postDescription.text = Posts.shared.posts[index].description
+        likes.text = "Views: \(Posts.shared.posts[index].views)"
+        view.text = "Likes: \(Posts.shared.posts[index].likes)"
+    }
+    @objc func addLikes(){
+
     }
 
     private func setConstraints() {
