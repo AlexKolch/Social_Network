@@ -81,7 +81,7 @@ extension PhotosTableViewCell {
 
             photosStackViewImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             photosStackViewImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            photosStackViewImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            photosStackViewImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
         ])
     }
 }

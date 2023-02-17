@@ -121,6 +121,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     @objc private func changeStatusButtonTapped() {
         if !(statusTextField.text!.isEmpty) {
             statusLabel.text = statusTextField.text
+            statusTextField.text = .none
+            statusTextField.resignFirstResponder()
         } else {
             showAlert(withTitle: "Упс...", andMessage: "Кажется вы не ввели значение")
             statusTextField.shake()
@@ -172,6 +174,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             self.avatarImageView.layer.cornerRadius = self.avatarImageView.bounds.width / 2
             self.layoutIfNeeded()
         }
+        //второй вариант
 //        UIImageView.animate(withDuration: 0.2) {
 //            self.backButton.alpha = 0
 //            self.avatarBackground.alpha = 0
@@ -217,7 +220,7 @@ extension ProfileHeaderView {
 }
 
 
-
+//второй вариант
 
 /*@objc private func avatarDidTapped(sender: UITapGestureRecognizer){
     let imageView = sender.view

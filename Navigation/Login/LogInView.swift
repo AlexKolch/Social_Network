@@ -41,6 +41,9 @@ final class LogInView: UIView {
         textField.layer.borderWidth = 0.5
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
+        textField.returnKeyType = .done
+        textField.enablesReturnKeyAutomatically = true
+        textField.clearButtonMode = .always
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.tag = 1
         textField.addTarget(self, action: #selector(tfWasChanget), for: .editingChanged)
@@ -59,6 +62,9 @@ final class LogInView: UIView {
         textField.layer.borderWidth = 0.5
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
+        textField.clearButtonMode = .always
+        textField.returnKeyType = .done
+        textField.enablesReturnKeyAutomatically = true
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.isSecureTextEntry = true
         textField.tag = 2

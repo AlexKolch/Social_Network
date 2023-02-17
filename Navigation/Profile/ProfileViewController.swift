@@ -53,6 +53,7 @@ extension ProfileViewController {
         ]
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.isHidden = false
+        navigationController?.tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
 
@@ -65,11 +66,13 @@ extension ProfileViewController {
             2
         }
 
+
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             guard section == 0 else { return nil }
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifier)
             return headerView
         }
+
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             switch section {
@@ -82,10 +85,11 @@ extension ProfileViewController {
         func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _,_,_ in
                 Posts.shared.posts.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .left)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             }
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }
+
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             switch indexPath.section {
@@ -94,9 +98,14 @@ extension ProfileViewController {
                 navigationController?.pushViewController(CollectionViewController(), animated: true)
             default:
                 tableView.deselectRow(at: indexPath, animated: true)
+                let postsVC = PostsViewController()
+                Posts.shared.posts[indexPath.row].views += 1
+                postsVC.post = Posts.shared.posts[indexPath.row]
+                navigationController?.pushViewController(postsVC, animated: true)
             }
         }
 
+        
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             switch indexPath.section {
             case 0:
