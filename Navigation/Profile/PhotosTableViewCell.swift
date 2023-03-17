@@ -72,16 +72,22 @@ extension PhotosTableViewCell {
         photos.forEach { str in  for index in 0..<1 {
             let photo = setPhotos(index: index)
 
-            if let url = URL(string: str),
-               
-               let data = try? Data(contentsOf: url) {
-                photo.image = UIImage(data: data)
+            let queue = DispatchQueue.global(qos: .userInitiated)
+            queue.async {
+
+                if let url = URL(string: str),
+                   let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        photo.image = UIImage(data: data)
+
+                        self.photosStackViewImage.addArrangedSubview(photo)
+                        NSLayoutConstraint.activate([
+                            photo.widthAnchor.constraint(equalToConstant: 120),
+                            photo.heightAnchor.constraint(equalTo: photo.widthAnchor),
+                        ])
+                    }
+                }
             }
-            photosStackViewImage.addArrangedSubview(photo)
-            NSLayoutConstraint.activate([
-                photo.widthAnchor.constraint(equalToConstant: 120),
-                photo.heightAnchor.constraint(equalTo: photo.widthAnchor),
-            ])
         }
     }
 }

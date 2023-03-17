@@ -32,10 +32,15 @@ final class PhotoCollectionView: UICollectionViewCell {
     }
 
     func configure(path: String) {
-        if let url = URL(string: path),
-           let data = try? Data(contentsOf: url),
-           let image = UIImage(data: data) {
-            photoImage.image = image
+        let queue = DispatchQueue.global(qos: .default)
+        queue.async {
+            if let url = URL(string: path),
+               let data = try? Data(contentsOf: url),
+               let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.photoImage.image = image
+                }
+            }
         }
     }
 
