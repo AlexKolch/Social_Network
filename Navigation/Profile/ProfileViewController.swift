@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
         tableView.reloadData()
     }
 }
-    // MARK: - Extension Constraints
+    // MARK: - Constraints
 extension ProfileViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -59,7 +59,7 @@ extension ProfileViewController {
 
     }
 }
-    // MARK: - UITableViewDataSource, UITableViewDelegate
+    // MARK: - UITableView Delegate
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         func numberOfSections(in tableView: UITableView) -> Int {

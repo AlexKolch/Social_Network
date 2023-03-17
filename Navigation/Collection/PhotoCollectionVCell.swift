@@ -31,6 +31,14 @@ final class PhotoCollectionView: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func configure(path: String) {
+        if let url = URL(string: path),
+           let data = try? Data(contentsOf: url),
+           let image = UIImage(data: data) {
+            photoImage.image = image
+        }
+    }
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             photoImage.topAnchor.constraint(equalTo: contentView.topAnchor),

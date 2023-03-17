@@ -3,7 +3,9 @@ import UIKit
 
 final class PhotosTableViewCell: UITableViewCell  {
     static let identifier = "photoTableVCell"
-    private let photos = DataPhoto.shared.photos
+    //private let photos = DataPhoto.shared.photos
+    private let photos = DataPhoto.shared.images
+    var urlPath: String!
     
     private let photoLabel: UILabel = {
         let labelView = UILabel()
@@ -42,11 +44,19 @@ final class PhotosTableViewCell: UITableViewCell  {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+//    private func configure(path: String) {
+//        if let url = URL(string: path),
+//           let data = try? Data(contentsOf: url),
+//           let image = UIImage(data: data) {
+//
+//        }
+//    }
 }
 
 extension PhotosTableViewCell {
 
-    private func setPhotos(index: Int)-> UIImageView {
+    func setPhotos(index: Int)-> UIImageView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: photos[index])
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,8 +68,15 @@ extension PhotosTableViewCell {
     }
 
     private func setPhotosStack() {
-        for index in 0..<4 {
+
+        photos.forEach { str in  for index in 0..<1 {
             let photo = setPhotos(index: index)
+
+            if let url = URL(string: str),
+               
+               let data = try? Data(contentsOf: url) {
+                photo.image = UIImage(data: data)
+            }
             photosStackViewImage.addArrangedSubview(photo)
             NSLayoutConstraint.activate([
                 photo.widthAnchor.constraint(equalToConstant: 120),
@@ -67,6 +84,7 @@ extension PhotosTableViewCell {
             ])
         }
     }
+}
 
     private func setConstraints() {
         NSLayoutConstraint.activate([

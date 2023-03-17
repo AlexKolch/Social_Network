@@ -25,7 +25,7 @@
 		FC9705EF29755B8C00D5D5C7 /* DataPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705EE29755B8C00D5D5C7 /* DataPhoto.swift */; };
 		FC9705F22975697A00D5D5C7 /* Extension UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F12975697A00D5D5C7 /* Extension UIView.swift */; };
 		FC9705F429757AE000D5D5C7 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F329757AE000D5D5C7 /* CollectionViewController.swift */; };
-		FC9705F62979A2A200D5D5C7 /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F52979A2A200D5D5C7 /* PhotoCollectionView.swift */; };
+		FC9705F62979A2A200D5D5C7 /* PhotoCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F52979A2A200D5D5C7 /* PhotoCollectionVCell.swift */; };
 		FC9705F82986C72300D5D5C7 /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F72986C72300D5D5C7 /* DataUser.swift */; };
 		FCEAF66C2944B8180029E864 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +51,7 @@
 		FC9705EE29755B8C00D5D5C7 /* DataPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPhoto.swift; sourceTree = "<group>"; };
 		FC9705F12975697A00D5D5C7 /* Extension UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIView.swift"; sourceTree = "<group>"; };
 		FC9705F329757AE000D5D5C7 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		FC9705F52979A2A200D5D5C7 /* PhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionView.swift; sourceTree = "<group>"; };
+		FC9705F52979A2A200D5D5C7 /* PhotoCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionVCell.swift; sourceTree = "<group>"; };
 		FC9705F72986C72300D5D5C7 /* DataUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUser.swift; sourceTree = "<group>"; };
 		FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				FC9705F02975693500D5D5C7 /* Extension project */,
-				FC9705ED2975599400D5D5C7 /* PhotoTable */,
+				FC9705ED2975599400D5D5C7 /* Collection */,
 				FC4AB636295C6C7100FE2AB2 /* Post */,
 				FC9678B529599BF40027E37D /* Login */,
 				FCEAF66A2944B8030029E864 /* Profile */,
@@ -149,14 +149,13 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		FC9705ED2975599400D5D5C7 /* PhotoTable */ = {
+		FC9705ED2975599400D5D5C7 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				FC9705EB2975558600D5D5C7 /* PhotosTableViewCell.swift */,
+				FC9705F52979A2A200D5D5C7 /* PhotoCollectionVCell.swift */,
 				FC9705F329757AE000D5D5C7 /* CollectionViewController.swift */,
-				FC9705F52979A2A200D5D5C7 /* PhotoCollectionView.swift */,
 			);
-			path = PhotoTable;
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		FC9705F02975693500D5D5C7 /* Extension project */ = {
@@ -172,6 +171,7 @@
 			children = (
 				FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */,
 				FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */,
+				FC9705EB2975558600D5D5C7 /* PhotosTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 				FC2BC6B329BB310B0060BEAB /* Greetings.swift in Sources */,
 				FCEAF66C2944B8180029E864 /* ProfileHeaderView.swift in Sources */,
 				FC9705F82986C72300D5D5C7 /* DataUser.swift in Sources */,
-				FC9705F62979A2A200D5D5C7 /* PhotoCollectionView.swift in Sources */,
+				FC9705F62979A2A200D5D5C7 /* PhotoCollectionVCell.swift in Sources */,
 				FC9705EF29755B8C00D5D5C7 /* DataPhoto.swift in Sources */,
 				FC9705F22975697A00D5D5C7 /* Extension UIView.swift in Sources */,
 			);

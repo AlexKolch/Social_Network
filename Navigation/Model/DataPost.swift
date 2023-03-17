@@ -18,6 +18,7 @@ struct DataPost {
 final class Posts {
     static let shared: Posts = .init()
 
+
     var posts: [DataPost] = [
         DataPost(author: DataUser.setupUser(),
                  description: "Кошка выбирает себе хозяина, и никак иначе.",
