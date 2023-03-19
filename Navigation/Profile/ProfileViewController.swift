@@ -2,6 +2,9 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    //weak var delegate: SendImageDelegate?
+    var closure: ((IndexPath, String) -> ())?
+
     // MARK: - TableView
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -99,8 +102,13 @@ extension ProfileViewController {
             default:
                 tableView.deselectRow(at: indexPath, animated: true)
                 let postsVC = PostsViewController()
+
                 Posts.shared.posts[indexPath.row].views += 1
                 postsVC.post = Posts.shared.posts[indexPath.row]
+                closure?(indexPath, DataPhoto.shared.urlImages[indexPath.row])
+
+               // delegate?.sendImagePost(for: DataPhoto.shared.urlImages[indexPath.row])
+
                 navigationController?.pushViewController(postsVC, animated: true)
             }
         }
@@ -113,10 +121,16 @@ extension ProfileViewController {
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as! PostTableViewCell
-                cell.setupCell(with: indexPath.row)
+                let urlImg = DataPhoto.shared.urlImages[indexPath.row]
+
+                cell.setupCell(with: indexPath.row, urlString: urlImg)
                 return cell
         }
     }
 }
+
+
+
+
 
 

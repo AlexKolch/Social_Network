@@ -8,7 +8,7 @@
 import UIKit
 
 class CollectionViewController: UIViewController {
-    private let images = DataPhoto.shared.images
+    private let images = DataPhoto.shared.urlImages
     //private let photos = DataPhoto.shared.photos
     // MARK: - Properties
     private var photosCollectionView: UICollectionView = {

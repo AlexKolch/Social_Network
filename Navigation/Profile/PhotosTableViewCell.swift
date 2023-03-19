@@ -3,9 +3,9 @@ import UIKit
 
 final class PhotosTableViewCell: UITableViewCell  {
     static let identifier = "photoTableVCell"
-    //private let photos = DataPhoto.shared.photos
-    private let photos = DataPhoto.shared.images
-    var urlPath: String!
+
+    private let photos = DataPhoto.shared.urlImages
+
     
     private let photoLabel: UILabel = {
         let labelView = UILabel()
@@ -44,14 +44,6 @@ final class PhotosTableViewCell: UITableViewCell  {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-//    private func configure(path: String) {
-//        if let url = URL(string: path),
-//           let data = try? Data(contentsOf: url),
-//           let image = UIImage(data: data) {
-//
-//        }
-//    }
 }
 
 extension PhotosTableViewCell {
@@ -69,7 +61,8 @@ extension PhotosTableViewCell {
 
     private func setPhotosStack() {
 
-        photos.forEach { str in  for index in 0..<1 {
+        photos.forEach { str in
+            for index in 0..<1 {
             let photo = setPhotos(index: index)
 
             let queue = DispatchQueue.global(qos: .userInitiated)
