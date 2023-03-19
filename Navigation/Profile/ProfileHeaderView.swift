@@ -1,5 +1,4 @@
 
-import Foundation
 import UIKit
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
@@ -252,26 +251,4 @@ extension ProfileHeaderView {
         fatalError()
     }
 }
-
-///////////////////////
-
- avatarStartPoint = avatarImageView.center
- self.avatarImageView.isUserInteractionEnabled = false
- UIView.animate(withDuration: 0.5) {
-     //            self.avatarImageView.center.y = UIScreen.main.bounds.height/2
-     //            self.avatarImageView.center.x = UIScreen.main.bounds.width/2
-     self.avatarImageView.center = CGPoint(x: UIScreen.main.bounds.midX,
-                                           y: UIScreen.main.bounds.midY)  //на центр экрана
-     self.avatarImageView.transform = CGAffineTransform(scaleX: 4, y: 4)
-     self.avatarImageView.layer.cornerRadius = 0
-     self.avatarBackground.isHidden = false
-     self.avatarBackground.alpha = 0.9
-     // self.avatarBackground.addSubview(self.avatarImageView)
-
- } completion: { _ in
-     UIView.animate(withDuration: 0.3) {
-         self.backButton.alpha = 1
-     }
- }
-
- */
+*/

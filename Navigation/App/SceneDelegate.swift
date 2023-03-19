@@ -19,33 +19,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     
-    func creatFeedViewController() -> UINavigationController {
-        let feedViewController = UINavigationController(rootViewController: FeedViewController())
-        feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "newspaper.fill"), tag: 0)
-        return feedViewController
-    }
+    func createGreetingNC() -> UINavigationController {
+        let greetingVC = GreetingViewController()
+        greetingVC.tabBarItem = UITabBarItem(title: "О разработчике", image: UIImage(systemName: "person"), tag: 0)
 
-//    func creatProfileViewController() -> UINavigationController {
-//        let profileViewController = UINavigationController(rootViewController: ProfileViewController())
-//        profileViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 1)
-//        return profileViewController
-//    }
+        return UINavigationController(rootViewController: greetingVC)
+    }
     
-    func creatLoginViewController() -> UINavigationController {
-        let loginViewController = UINavigationController(rootViewController: LogInViewController())
-        loginViewController.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 1)
-        //loginViewController.navigationBar.isHidden = true
-        return loginViewController
+    func createLoginNC() -> UINavigationController {
+        let loginVC = LogInViewController()
+        loginVC.tabBarItem = UITabBarItem(title: "Проект", image: UIImage(systemName: "newspaper.fill"), tag: 1)
+
+        return UINavigationController(rootViewController: loginVC)
     }
 
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        tabBar.viewControllers = [creatFeedViewController(), creatLoginViewController()]
+        tabBar.viewControllers = [createGreetingNC(), createLoginNC()]
         tabBar.tabBar.backgroundColor = .white
+       
         return tabBar
     }
 
-  
+
     func sceneDidDisconnect(_ scene: UIScene) {
     }
 
