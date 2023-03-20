@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
         tableView.reloadData()
     }
 }
-    // MARK: - Extension Constraints
+    // MARK: - Constraints
 extension ProfileViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -59,7 +59,7 @@ extension ProfileViewController {
 
     }
 }
-    // MARK: - UITableViewDataSource, UITableViewDelegate
+    // MARK: - UITableView Delegate
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -99,8 +99,13 @@ extension ProfileViewController {
             default:
                 tableView.deselectRow(at: indexPath, animated: true)
                 let postsVC = PostsViewController()
+
                 Posts.shared.posts[indexPath.row].views += 1
                 postsVC.post = Posts.shared.posts[indexPath.row]
+
+                guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell else {return}
+                postsVC.postImageView.image = cell.postImageView.image
+
                 navigationController?.pushViewController(postsVC, animated: true)
             }
         }
@@ -113,10 +118,16 @@ extension ProfileViewController {
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as! PostTableViewCell
-                cell.setupCell(with: indexPath.row)
+                let urlImg = DataPhoto.shared.urlImages[indexPath.row]
+
+                cell.setupCell(with: indexPath.row, urlString: urlImg)
                 return cell
         }
     }
 }
+
+
+
+
 
 

@@ -8,7 +8,7 @@
 import UIKit
 
 class CollectionViewController: UIViewController {
-
+    private let images = DataPhoto.shared.urlImages
     private let photos = DataPhoto.shared.photos
     // MARK: - Properties
     private var photosCollectionView: UICollectionView = {
@@ -106,13 +106,13 @@ extension CollectionViewController {
     // MARK: - Delegate
 extension CollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photos.count
+        images.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionView.identifier, for: indexPath) as! PhotoCollectionView
-        let photoCell = UIImage(named: photos[indexPath.item])
-        cell.photoImage.image = photoCell
+
+        cell.configure(path: images[indexPath.row])
         return cell
     }
 }

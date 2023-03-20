@@ -8,8 +8,12 @@
 import UIKit
 
 class PostsViewController: UIViewController {
+    private let photos = DataPhoto.shared.urlImages
     var post: DataPost!
     private var index = 0
+    let profileVC = ProfileViewController()
+
+
     // MARK: - Properties
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -23,6 +27,7 @@ class PostsViewController: UIViewController {
     private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.contentMode = .scaleAspectFill
         return contentView
     }()
 
@@ -40,10 +45,9 @@ class PostsViewController: UIViewController {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 20
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: post.image)
         return imageView
     }()
 
@@ -77,6 +81,7 @@ class PostsViewController: UIViewController {
         label.text = "Views: \(post.views)"
         return label
     }()
+
     // MARK: - Method
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +126,7 @@ class PostsViewController: UIViewController {
             postDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
             postImageView.topAnchor.constraint(equalTo: postDescription.bottomAnchor, constant: 16),
+            postImageView.heightAnchor.constraint(equalToConstant: 300),
             postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
@@ -132,3 +138,5 @@ class PostsViewController: UIViewController {
         ])
     }
 }
+
+
