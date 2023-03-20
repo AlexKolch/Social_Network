@@ -42,6 +42,7 @@ final class PhotoCollectionView: UICollectionViewCell {
 
     func configure(path: String) {
         activityView.startAnimating()
+
         guard let urlRequest = URL(string: path) else {return}
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let dataImage = data {

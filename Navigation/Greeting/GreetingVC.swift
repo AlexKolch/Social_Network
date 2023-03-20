@@ -28,7 +28,11 @@ class GreetingViewController: UIViewController {
         setupAppearance()
         setupButton()
     }
+
 //Блокировка ориентации вызов
+
+//Блокировка ориентации
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
