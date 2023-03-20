@@ -62,7 +62,7 @@ class PostTableViewCell: UITableViewCell {
 
     private let activityView: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView(style: .large)
-        activity.color = .blue
+        activity.color = .systemBlue
         activity.hidesWhenStopped = true
         activity.translatesAutoresizingMaskIntoConstraints = false
         return activity

@@ -8,16 +8,27 @@
 import UIKit
 
 class GreetingViewController: UIViewController {
-    let greeting = Greetings()
+    private let greeting = Greetings()
+
+    lazy var button: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 24
+        button.setTitle("Открыть резюме", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "О разработчике"
-        view.backgroundColor = .white
-        setupButton()
         view.addSubview(greeting)
+        setupAppearance()
+        setupButton()
     }
-
+//Блокировка ориентации
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -30,24 +41,18 @@ class GreetingViewController: UIViewController {
         AppDelegate.AppUtility.lockOrientation(.all)
     }
     
-    lazy var button: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 24
-        button.setTitle("Открыть резюме", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        return button
-    }()
-    
     @objc private func buttonAction() {
         let postViewController = WKWebViewController()
         self.navigationController?.pushViewController(postViewController, animated: true)
-        }
+    }
 
-    
+    private func setupAppearance() {
+        title = "О разработчике"
+        view.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.backButtonTitle = " "
+    }
+
     private func setupButton() {
         self.view.addSubview(self.button)
         self.button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -120).isActive = true
