@@ -2,9 +2,6 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    //weak var delegate: SendImageDelegate?
-    var closure: ((IndexPath, String) -> ())?
-
     // MARK: - TableView
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -105,9 +102,9 @@ extension ProfileViewController {
 
                 Posts.shared.posts[indexPath.row].views += 1
                 postsVC.post = Posts.shared.posts[indexPath.row]
-                closure?(indexPath, DataPhoto.shared.urlImages[indexPath.row])
 
-               // delegate?.sendImagePost(for: DataPhoto.shared.urlImages[indexPath.row])
+                guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell else {return}
+                postsVC.postImageView.image = cell.postImageView.image
 
                 navigationController?.pushViewController(postsVC, animated: true)
             }

@@ -60,6 +60,14 @@ class PostTableViewCell: UITableViewCell {
         return view
     }()
 
+    private let activityView: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: .large)
+        activity.color = .blue
+        activity.hidesWhenStopped = true
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        return activity
+    }()
+
     // MARK: - setupCell
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -68,6 +76,7 @@ class PostTableViewCell: UITableViewCell {
         addSubview(postDescription)
         addSubview(likes)
         addSubview(views)
+        addSubview(activityView)
         setConstraints()
     }
 
@@ -79,7 +88,7 @@ class PostTableViewCell: UITableViewCell {
         self.index = index
 
         authorPost.text = Posts.shared.posts[index].author.fullName
-        //postImageView.image = UIImage(named: Posts.shared.posts[index].image)
+        activityView.startAnimating()
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async { [weak self] in
             if let url = URL(string: urlString),
@@ -87,6 +96,7 @@ class PostTableViewCell: UITableViewCell {
                let image = UIImage(data: data) {
                 DispatchQueue.main.async {
                     self?.postImageView.image = image
+                    self?.activityView.stopAnimating()
                     self?.postDescription.text = Posts.shared.posts[index].description
                     self?.likes.text = "likes: \(Posts.shared.posts[index].likes)"
                     self?.views.text = "Views: \(Posts.shared.posts[index].views)"
@@ -123,7 +133,10 @@ class PostTableViewCell: UITableViewCell {
 
             views.topAnchor.constraint(equalTo: postDescription.bottomAnchor, constant: 16),
             views.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            views.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            views.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+
+            activityView.centerXAnchor.constraint(equalTo: postImageView.centerXAnchor),
+            activityView.centerYAnchor.constraint(equalTo: postImageView.centerYAnchor)
         ])
     }
 }

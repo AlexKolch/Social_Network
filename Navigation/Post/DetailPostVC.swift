@@ -7,16 +7,12 @@
 
 import UIKit
 
-protocol SendImageDelegate: AnyObject {
-    func sendImagePost(for path: String)
-    }
-
-class PostsViewController: UIViewController, SendImageDelegate {
+class PostsViewController: UIViewController {
     private let photos = DataPhoto.shared.urlImages
     var post: DataPost!
     private var index = 0
     let profileVC = ProfileViewController()
-    var exersiseImage = [UIImage]()
+
 
     // MARK: - Properties
     private lazy var scrollView: UIScrollView = {
@@ -49,11 +45,9 @@ class PostsViewController: UIViewController, SendImageDelegate {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 20
         imageView.translatesAutoresizingMaskIntoConstraints = false
-       // imageView.image = UIImage(named: post.image)
-         imageView.image = UIImage(named: "\(exersiseImage[0])")
         return imageView
     }()
 
@@ -87,6 +81,7 @@ class PostsViewController: UIViewController, SendImageDelegate {
         label.text = "Views: \(post.views)"
         return label
     }()
+
     // MARK: - Method
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,68 +89,7 @@ class PostsViewController: UIViewController, SendImageDelegate {
         view.backgroundColor = .white
         setConstraints()
         setupNavigationBar()
-
-
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-                configure()
-      //  profileVC.delegate = self
-        //closure
-//        profileVC.closure = { [weak self] indexPath, img in
-//            if let url = URL(string: img),
-//               let data = try? Data(contentsOf: url),
-//               let image = UIImage(data: data) {
-//                self?.postImageView.image = image
-//            }
-//        }
-    }
-
-
-    func sendImagePost(for path: String) {
-
-//        let queue = DispatchQueue.global(qos: .userInitiated)
-//        queue.async {
-            if let url = URL(string: path),
-               let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-//                DispatchQueue.main.async {
-                    self.postImageView.image = image
-//                }
-//            }
-        }
-    }
-
-//    func configure() {
-//        photos.forEach { str in
-//
-//                let queue = DispatchQueue.global(qos: .userInitiated)
-//                queue.async {
-//                    if let url = URL(string: str),
-//                       let data = try? Data(contentsOf: url),
-//                       let image = UIImage(data: data) {
-//                        DispatchQueue.main.async {
-//                            self.postImageView.image = image
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    func configure() {
-//        photos.forEach {
-//                sendImagePost(for: $0)
-//        }
-//    }
-    func configure() {
-        profileVC.closure = { [weak self] indexPath, img in
-            if let url = URL(string: img),
-               let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-                self?.postImageView.image = image
-            }
-        }
-    }
-
 
     func setupNavigationBar() {
         title = "Post"
@@ -192,6 +126,7 @@ class PostsViewController: UIViewController, SendImageDelegate {
             postDescription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
             postImageView.topAnchor.constraint(equalTo: postDescription.bottomAnchor, constant: 16),
+            postImageView.heightAnchor.constraint(equalToConstant: 300),
             postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
 
@@ -203,4 +138,5 @@ class PostsViewController: UIViewController, SendImageDelegate {
         ])
     }
 }
+
 

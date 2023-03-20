@@ -43,7 +43,7 @@ class GreetingViewController: UIViewController {
     }()
     
     @objc private func buttonAction() {
-        let postViewController = PostViewController()
+        let postViewController = WKWebViewController()
         self.navigationController?.pushViewController(postViewController, animated: true)
         }
 
