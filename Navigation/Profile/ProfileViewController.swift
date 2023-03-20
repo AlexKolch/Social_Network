@@ -120,7 +120,7 @@ extension ProfileViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier) as! ProfileTableViewCell
                 let urlImg = DataPhoto.shared.urlImages[indexPath.row]
 
-                cell.setupCell(with: indexPath.row, urlString: urlImg)
+                cell.configureCell(with: indexPath.row, urlString: urlImg)
                 return cell
         }
     }

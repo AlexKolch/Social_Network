@@ -103,7 +103,7 @@ extension CollectionViewController {
         }
     }
 }
-    // MARK: - Delegate
+    // MARK: - DataSource Delegate
 extension CollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         images.count
