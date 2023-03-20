@@ -3,10 +3,8 @@ import UIKit
 
 final class PhotosTableViewCell: UITableViewCell  {
     static let identifier = "photoTableVCell"
-
     private let photos = DataPhoto.shared.urlImages
 
-    
     private let photoLabel: UILabel = {
         let labelView = UILabel()
         labelView.translatesAutoresizingMaskIntoConstraints = false

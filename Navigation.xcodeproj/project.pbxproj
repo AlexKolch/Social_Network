@@ -17,7 +17,6 @@
 		FC4063D1293F8D3A008BBE60 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */; };
 		FC4063D32940810D008BBE60 /* WKWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D22940810D008BBE60 /* WKWebVC.swift */; };
 		FC4063D529409AEA008BBE60 /* DataPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D429409AEA008BBE60 /* DataPost.swift */; };
-		FC4063D72940B952008BBE60 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063D62940B952008BBE60 /* InfoViewController.swift */; };
 		FC4AB638295C6CAE00FE2AB2 /* ProfileTableVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4AB637295C6CAE00FE2AB2 /* ProfileTableVCell.swift */; };
 		FC9678AE2952097C0027E37D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9678AD2952097C0027E37D /* LogInViewController.swift */; };
 		FC9678B4295216A20027E37D /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9678B3295216A20027E37D /* LogInView.swift */; };
@@ -43,7 +42,6 @@
 		FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FC4063D22940810D008BBE60 /* WKWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebVC.swift; sourceTree = "<group>"; };
 		FC4063D429409AEA008BBE60 /* DataPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPost.swift; sourceTree = "<group>"; };
-		FC4063D62940B952008BBE60 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		FC4AB637295C6CAE00FE2AB2 /* ProfileTableVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVCell.swift; sourceTree = "<group>"; };
 		FC9678AD2952097C0027E37D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FC9678B3295216A20027E37D /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
@@ -91,7 +89,7 @@
 				FC4AB636295C6C7100FE2AB2 /* Post */,
 				FC9678B529599BF40027E37D /* Login */,
 				FCEAF66A2944B8030029E864 /* Profile */,
-				FC9678AF29520B890027E37D /* ViewControllers */,
+				FC9678AF29520B890027E37D /* Greeting */,
 				FC9678B129520BE50027E37D /* Model */,
 				FC9678B229520C1F0027E37D /* App */,
 				FC4063C5293F66E5008BBE60 /* Assets.xcassets */,
@@ -104,21 +102,19 @@
 		FC4AB636295C6C7100FE2AB2 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				FC4AB637295C6CAE00FE2AB2 /* ProfileTableVCell.swift */,
 				FC3F0D7C299CFA5D00E66205 /* DetailPostVC.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
 		};
-		FC9678AF29520B890027E37D /* ViewControllers */ = {
+		FC9678AF29520B890027E37D /* Greeting */ = {
 			isa = PBXGroup;
 			children = (
 				FC4063C0293F66E4008BBE60 /* GreetingVC.swift */,
-				FC4063D22940810D008BBE60 /* WKWebVC.swift */,
-				FC4063D62940B952008BBE60 /* InfoViewController.swift */,
 				FC2BC6B229BB310B0060BEAB /* GreetingsView.swift */,
+				FC4063D22940810D008BBE60 /* WKWebVC.swift */,
 			);
-			path = ViewControllers;
+			path = Greeting;
 			sourceTree = "<group>";
 		};
 		FC9678B129520BE50027E37D /* Model */ = {
@@ -171,6 +167,7 @@
 			children = (
 				FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */,
 				FC4063D0293F8D3A008BBE60 /* ProfileViewController.swift */,
+				FC4AB637295C6CAE00FE2AB2 /* ProfileTableVCell.swift */,
 				FC9705EB2975558600D5D5C7 /* PhotosTableViewCell.swift */,
 			);
 			path = Profile;
@@ -253,7 +250,6 @@
 				FC4063D1293F8D3A008BBE60 /* ProfileViewController.swift in Sources */,
 				FC9678AE2952097C0027E37D /* LogInViewController.swift in Sources */,
 				FC4063BD293F66E4008BBE60 /* AppDelegate.swift in Sources */,
-				FC4063D72940B952008BBE60 /* InfoViewController.swift in Sources */,
 				FC4063D529409AEA008BBE60 /* DataPost.swift in Sources */,
 				FC4063BF293F66E4008BBE60 /* SceneDelegate.swift in Sources */,
 				FC9705F429757AE000D5D5C7 /* CollectionVC.swift in Sources */,

@@ -8,12 +8,13 @@
 import UIKit
 import WebKit
 
-class WKWebViewController: UIViewController {
-    var titlePost: String!
+final class WKWebViewController: UIViewController {
+
     private let webView = WKWebView()
+
     private let activityView: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView(style: .large)
-        activity.color = .blue
+        activity.color = .systemBlue
         activity.hidesWhenStopped = true
         activity.translatesAutoresizingMaskIntoConstraints = false
         return activity
@@ -23,31 +24,29 @@ class WKWebViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(webView)
         view.addSubview(activityView)
-
+        
+        navigationItem.title = "Сертификаты"
         setConstraints()
         loadRequest()
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-//            self.activityView.stopAnimating()
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-//            self.activityView.startAnimating()
-//        }
-//
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+            self.activityView.startAnimating()
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.7) {
+            self.activityView.stopAnimating()
+        }
+    }
 
     private func loadRequest() {
-        activityView.startAnimating()
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async {
             guard let url = URL(string: "https://disk.yandex.ru/i/n_ypQqzIYIX2tQ") else {return}
             let urlRequest = URLRequest(url: url)
             DispatchQueue.main.async {
                 self.webView.load(urlRequest)
-                self.activityView.stopAnimating()
             }
         }
     }

@@ -5,7 +5,7 @@ struct DataPhoto {
     static let shared = DataPhoto()
 
     private init () {}
-    //из сети
+    
     let urlImages: [String] = [
         "https://cdnn1.ukraina.ru/img/07e6/0c/02/1041436899_0:206:2905:1840_1280x0_80_0_0_2e27b1a255208559105c5380bee0810b.jpg",
         "https://img.kanal-o.ru/img/2020-06-29/fmt_81_24_shutterstock_547953349.jpg",

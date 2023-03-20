@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController {
+final class CollectionViewController: UIViewController {
     private let images = DataPhoto.shared.urlImages
     private let photos = DataPhoto.shared.photos
     // MARK: - Properties

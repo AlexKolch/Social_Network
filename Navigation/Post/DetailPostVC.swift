@@ -7,12 +7,9 @@
 
 import UIKit
 
-class PostsViewController: UIViewController {
-    private let photos = DataPhoto.shared.urlImages
+class DetailPostVC: UIViewController {
     var post: DataPost!
     private var index = 0
-    let profileVC = ProfileViewController()
-
 
     // MARK: - Properties
     private lazy var scrollView: UIScrollView = {
