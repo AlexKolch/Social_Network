@@ -27,7 +27,7 @@ final class WKWebViewController: UIViewController {
         
         navigationItem.title = "Сертификаты"
         setConstraints()
-        loadRequest()
+        loadPDF()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -40,11 +40,11 @@ final class WKWebViewController: UIViewController {
         }
     }
 
-    private func loadRequest() {
+    private func loadPDF() {
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async {
-            guard let url = URL(string: "https://disk.yandex.ru/i/n_ypQqzIYIX2tQ") else {return}
-            let urlRequest = URLRequest(url: url)
+            guard let urlPdf = Bundle.main.url(forResource: "Certificates", withExtension: "pdf") else {return}
+            let urlRequest = URLRequest(url: urlPdf)
             DispatchQueue.main.async {
                 self.webView.load(urlRequest)
             }
