@@ -1,7 +1,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController, UITextFieldDelegate {
+final class LogInViewController: UIViewController, UITextFieldDelegate {
   let user = DataUser.setupUser
     // MARK: - UIScrollView
     lazy var scrollView: UIScrollView = {

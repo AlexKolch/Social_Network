@@ -42,17 +42,17 @@ final class PhotoCollectionView: UICollectionViewCell {
 
     func configure(path: String) {
         activityView.startAnimating()
-        let queue = DispatchQueue.global(qos: .default)
-        queue.async {
-            if let url = URL(string: path),
-               let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
+
+        guard let urlRequest = URL(string: path) else {return}
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if let dataImage = data {
                 DispatchQueue.main.async {
-                    self.photoImage.image = image
-                    self.activityView.stopAnimating() 
+                    self.photoImage.image = UIImage(data: dataImage)
+                    self.activityView.stopAnimating()
                 }
             }
         }
+        task.resume()
     }
 
     private func setConstraints() {

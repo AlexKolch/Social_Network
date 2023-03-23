@@ -7,10 +7,10 @@
 
 import UIKit
 
-class PostTableViewCell: UITableViewCell {
-    static let shared = PostTableViewCell()
+final class ProfileTableViewCell: UITableViewCell {
     static let identifier = "postTableViewCellID"
     private var index = 0
+    private var path: String?
 
     // MARK: - Properties
     let authorPost: UILabel = {
@@ -84,16 +84,17 @@ class PostTableViewCell: UITableViewCell {
         postImageView.image = nil
     }
 
-    func setupCell(with index: Int, urlString: String) {
+    func configureCell(with index: Int, urlString: String) {
         self.index = index
-
+        self.path = urlString //сохраняем уникальный путь
         authorPost.text = Posts.shared.posts[index].author.fullName
         activityView.startAnimating()
         let queue = DispatchQueue.global(qos: .userInitiated)
         queue.async { [weak self] in
             if let url = URL(string: urlString),
                let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
+               let image = UIImage(data: data),
+               urlString == self?.path { //и проверяем его
                 DispatchQueue.main.async {
                     self?.postImageView.image = image
                     self?.activityView.stopAnimating()

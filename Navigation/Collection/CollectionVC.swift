@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController {
+final class CollectionViewController: UIViewController {
     private let images = DataPhoto.shared.urlImages
     private let photos = DataPhoto.shared.photos
     // MARK: - Properties
@@ -103,7 +103,7 @@ extension CollectionViewController {
         }
     }
 }
-    // MARK: - Delegate
+    // MARK: - DataSource Delegate
 extension CollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         images.count

@@ -14,7 +14,7 @@ class GreetingViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 24
-        button.setTitle("Открыть резюме", for: .normal)
+        button.setTitle("Сертификаты", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +28,7 @@ class GreetingViewController: UIViewController {
         setupAppearance()
         setupButton()
     }
+
 //Блокировка ориентации
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -55,7 +56,7 @@ class GreetingViewController: UIViewController {
 
     private func setupButton() {
         self.view.addSubview(self.button)
-        self.button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -120).isActive = true
+        self.button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
         self.button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         self.button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         self.button.heightAnchor.constraint(equalToConstant: 50).isActive = true

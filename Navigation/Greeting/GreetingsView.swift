@@ -28,7 +28,7 @@ final class Greetings: UIView {
     private let nameQualification: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Junior IOS - Developer"
+        label.text = "IOS - Developer"
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = .black
         return label
@@ -39,7 +39,23 @@ final class Greetings: UIView {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         text.text = """
-29 лет. Два высших образования по специальностям "Бизнес-Аналитик" квалификации Бакалавр и "Кинооператор" квалификации Специалист.\n Основатель видеостудии "Kolchfilm" с 2012 года. Работал в Оренбурге, Краснодаре, Санкт-Петербурге и Москве. \n С 2022 года увлекся программированием и мечтаю стать IOS - разработчиком.
+Основной стек:
+- Swift
+- Xcode
+- UIKit, Foundation
+- Design Patterns (Singleton, Delegate, Observer)
+- Верстка кодом, Storyboard IB
+- MVC
+- ООП
+- SOLID
+- CocoaPods, Swift Package Manager
+- AutoLayout, SnapKit
+- ARC, ViewController life cycle
+- UserDefautls
+- Git
+- GCD
+- Rest API немного (URLSession, Codable/Decodable, JSON)
+- Human Interface Guidelines
 """
         text.font = UIFont.systemFont(ofSize: 14, weight: .light)
         text.textColor = .black
@@ -77,9 +93,9 @@ extension Greetings {
             nameQualification.leadingAnchor.constraint(equalTo: imageAvatarView.trailingAnchor, constant: 20),
 
             textView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            textView.topAnchor.constraint(equalTo: imageAvatarView.bottomAnchor, constant: 50),
+            textView.topAnchor.constraint(equalTo: imageAvatarView.bottomAnchor, constant: 30),
             textView.leadingAnchor.constraint(equalTo: imageAvatarView.leadingAnchor),
-            textView.heightAnchor.constraint(equalToConstant: 200),
+            textView.heightAnchor.constraint(equalToConstant: 400),
             textView.widthAnchor.constraint(equalToConstant: 350)
         ])
     }
