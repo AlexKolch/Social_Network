@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     // MARK: - TableView
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
 
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifier)
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.identifier)
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
 
         view.addSubview(tableView)
@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
         tableView.reloadData()
     }
 }
-    // MARK: - Extension Constraints
+    // MARK: - Constraints
 extension ProfileViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -59,7 +59,7 @@ extension ProfileViewController {
 
     }
 }
-    // MARK: - UITableViewDataSource, UITableViewDelegate
+    // MARK: - UITableView Delegate
     extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -98,9 +98,14 @@ extension ProfileViewController {
                 navigationController?.pushViewController(CollectionViewController(), animated: true)
             default:
                 tableView.deselectRow(at: indexPath, animated: true)
-                let postsVC = PostsViewController()
+                let postsVC = DetailPostVC()
+
                 Posts.shared.posts[indexPath.row].views += 1
                 postsVC.post = Posts.shared.posts[indexPath.row]
+//передаем картинку из ячейки на след экран
+                guard let cell = tableView.cellForRow(at: indexPath) as? ProfileTableViewCell else {return}
+                postsVC.postImageView.image = cell.postImageView.image
+
                 navigationController?.pushViewController(postsVC, animated: true)
             }
         }
@@ -112,11 +117,17 @@ extension ProfileViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier, for: indexPath) as! PhotosTableViewCell
                 return cell
             default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as! PostTableViewCell
-                cell.setupCell(with: indexPath.row)
+                let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.identifier) as! ProfileTableViewCell
+                let urlImg = DataPhoto.shared.urlImages[indexPath.row]
+
+                cell.configureCell(with: indexPath.row, urlString: urlImg)
                 return cell
         }
     }
 }
+
+
+
+
 
 

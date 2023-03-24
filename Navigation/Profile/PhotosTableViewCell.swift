@@ -3,8 +3,8 @@ import UIKit
 
 final class PhotosTableViewCell: UITableViewCell  {
     static let identifier = "photoTableVCell"
-    private let photos = DataPhoto.shared.photos
-    
+    private let photos = DataPhoto.shared.urlImages
+
     private let photoLabel: UILabel = {
         let labelView = UILabel()
         labelView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +46,7 @@ final class PhotosTableViewCell: UITableViewCell  {
 
 extension PhotosTableViewCell {
 
-    private func setPhotos(index: Int)-> UIImageView {
+    func setPhotos(index: Int)-> UIImageView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: photos[index])
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,15 +58,30 @@ extension PhotosTableViewCell {
     }
 
     private func setPhotosStack() {
-        for index in 0..<4 {
+
+        photos.forEach { str in
+            for index in 0..<1 {
             let photo = setPhotos(index: index)
-            photosStackViewImage.addArrangedSubview(photo)
-            NSLayoutConstraint.activate([
-                photo.widthAnchor.constraint(equalToConstant: 120),
-                photo.heightAnchor.constraint(equalTo: photo.widthAnchor),
-            ])
+
+            let queue = DispatchQueue.global(qos: .userInitiated)
+            queue.async {
+
+                if let url = URL(string: str),
+                   let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        photo.image = UIImage(data: data)
+
+                        self.photosStackViewImage.addArrangedSubview(photo)
+                        NSLayoutConstraint.activate([
+                            photo.widthAnchor.constraint(equalToConstant: 120),
+                            photo.heightAnchor.constraint(equalTo: photo.widthAnchor),
+                        ])
+                    }
+                }
+            }
         }
     }
+}
 
     private func setConstraints() {
         NSLayoutConstraint.activate([

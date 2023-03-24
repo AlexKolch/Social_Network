@@ -1,7 +1,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController, UITextFieldDelegate {
+final class LogInViewController: UIViewController, UITextFieldDelegate {
   let user = DataUser.setupUser
     // MARK: - UIScrollView
     lazy var scrollView: UIScrollView = {
@@ -67,7 +67,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(_ notification: NSNotification) {
         let userInfo = notification.userInfo
         let keyboardFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-       // scrollView.contentSize = CGSize(width: .zero, height: keyboardFrameSize.height + 20)
         scrollView.contentOffset = CGPoint(x: 0, y: keyboardFrameSize.height - self.view.safeAreaInsets.bottom - 200)
     }
     
@@ -81,9 +80,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         guard let password = contentView.passwordTextField.text else {return}
 
         if user().password == password && (user().email == loginValue || user().phone == loginValue) && isValidEmail(email: loginValue) {
-//            contentView.loginTextField.text = "siliconCat@mail.ru"
-//            contentView.loginTextField.text = "89997654321"
-//            contentView.passwordTextField.text = "password"
             navigationController?.pushViewController(profileViewController, animated: true)
         } else if loginValue.count == 0 {
             contentView.loginTextField.shakeTF()

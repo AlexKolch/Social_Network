@@ -1,9 +1,7 @@
 
-import Foundation
 import UIKit
 
-class ProfileHeaderView: UITableViewHeaderFooterView {
-
+final class ProfileHeaderView: UITableViewHeaderFooterView {
     static let identifier = "profileHeaderID"
     let user = DataUser.setupUser()
 
@@ -174,16 +172,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             self.avatarImageView.layer.cornerRadius = self.avatarImageView.bounds.width / 2
             self.layoutIfNeeded()
         }
-        //второй вариант
-//        UIImageView.animate(withDuration: 0.2) {
-//            self.backButton.alpha = 0
-//            self.avatarBackground.alpha = 0
-//            self.avatarImageView.center = self.avatarStartPoint
-//            self.avatarImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-//            self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.width / 2
-//        }
     }
 }
+
 extension ProfileHeaderView {
     // MARK: - Constraints
     private func setConstraints() {
@@ -220,58 +211,3 @@ extension ProfileHeaderView {
 }
 
 
-//второй вариант
-
-/*@objc private func avatarDidTapped(sender: UITapGestureRecognizer){
-    let imageView = sender.view
-    avatarStartPoint = avatarImageView.frame.origin
-
-    switch sender.state {
-
-    case .began, .changed:
-        self.avatarImageView.isUserInteractionEnabled = true
-        UIView.animate(withDuration: 0.5) {
-            self.avatarImageView.center = CGPoint(x: UIScreen.main.bounds.midX,
-                                                  y: UIScreen.main.bounds.midY)  //на центр экрана
-            self.avatarImageView.transform = CGAffineTransform(
-                scaleX: 4, y: 4
-            )
-            self.avatarImageView.layer.cornerRadius = 0
-            self.avatarBackground.isHidden = false
-            self.avatarBackground.alpha = 0.9
-        } completion: { _ in
-            UIView.animate(withDuration: 0.3) {
-                self.backButton.alpha = 1
-            }
-        }
-    case .cancelled, .ended:
-        break
-    case .failed, .possible:
-        break
-    @unknown default:
-        fatalError()
-    }
-}
-
-///////////////////////
-
- avatarStartPoint = avatarImageView.center
- self.avatarImageView.isUserInteractionEnabled = false
- UIView.animate(withDuration: 0.5) {
-     //            self.avatarImageView.center.y = UIScreen.main.bounds.height/2
-     //            self.avatarImageView.center.x = UIScreen.main.bounds.width/2
-     self.avatarImageView.center = CGPoint(x: UIScreen.main.bounds.midX,
-                                           y: UIScreen.main.bounds.midY)  //на центр экрана
-     self.avatarImageView.transform = CGAffineTransform(scaleX: 4, y: 4)
-     self.avatarImageView.layer.cornerRadius = 0
-     self.avatarBackground.isHidden = false
-     self.avatarBackground.alpha = 0.9
-     // self.avatarBackground.addSubview(self.avatarImageView)
-
- } completion: { _ in
-     UIView.animate(withDuration: 0.3) {
-         self.backButton.alpha = 1
-     }
- }
-
- */
