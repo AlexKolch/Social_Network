@@ -43,9 +43,9 @@ final class Greetings: UIView {
 - Swift
 - Xcode
 - UIKit, Foundation
+- MVC
 - Design Patterns (Singleton, Delegate, Observer)
 - Верстка кодом, Storyboard IB
-- MVC
 - ООП
 - SOLID
 - CocoaPods, Swift Package Manager
@@ -54,7 +54,7 @@ final class Greetings: UIView {
 - UserDefautls
 - Git
 - GCD
-- Rest API немного (URLSession, Codable/Decodable, JSON)
+- URLSession
 - Human Interface Guidelines
 """
         text.font = UIFont.systemFont(ofSize: 14, weight: .light)

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FC2BC6B329BB310B0060BEAB /* GreetingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2BC6B229BB310B0060BEAB /* GreetingsView.swift */; };
-		FC34B28629CC894B006C1FF5 /* Certificates.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FC34B28529CC894B006C1FF5 /* Certificates.pdf */; };
 		FC3F0D7D299CFA5D00E66205 /* DetailPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F0D7C299CFA5D00E66205 /* DetailPostVC.swift */; };
 		FC4063BD293F66E4008BBE60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063BC293F66E4008BBE60 /* AppDelegate.swift */; };
 		FC4063BF293F66E4008BBE60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4063BE293F66E4008BBE60 /* SceneDelegate.swift */; };
@@ -27,12 +26,12 @@
 		FC9705F429757AE000D5D5C7 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F329757AE000D5D5C7 /* CollectionVC.swift */; };
 		FC9705F62979A2A200D5D5C7 /* PhotoCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F52979A2A200D5D5C7 /* PhotoCollectionVCell.swift */; };
 		FC9705F82986C72300D5D5C7 /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9705F72986C72300D5D5C7 /* DataUser.swift */; };
+		FCD4447929D5AFCB007F70E8 /* Certificates.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FCD4447829D5AFCB007F70E8 /* Certificates.pdf */; };
 		FCEAF66C2944B8180029E864 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FC2BC6B229BB310B0060BEAB /* GreetingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsView.swift; sourceTree = "<group>"; };
-		FC34B28529CC894B006C1FF5 /* Certificates.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Certificates.pdf; sourceTree = "<group>"; };
 		FC3F0D7C299CFA5D00E66205 /* DetailPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostVC.swift; sourceTree = "<group>"; };
 		FC4063B9293F66E4008BBE60 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC4063BC293F66E4008BBE60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		FC9705F329757AE000D5D5C7 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		FC9705F52979A2A200D5D5C7 /* PhotoCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionVCell.swift; sourceTree = "<group>"; };
 		FC9705F72986C72300D5D5C7 /* DataUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUser.swift; sourceTree = "<group>"; };
+		FCD4447829D5AFCB007F70E8 /* Certificates.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Certificates.pdf; sourceTree = "<group>"; };
 		FCEAF66B2944B8180029E864 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +115,7 @@
 				FC4063C0293F66E4008BBE60 /* GreetingVC.swift */,
 				FC2BC6B229BB310B0060BEAB /* GreetingsView.swift */,
 				FC4063D22940810D008BBE60 /* WKWebVC.swift */,
-				FC34B28529CC894B006C1FF5 /* Certificates.pdf */,
+				FCD4447829D5AFCB007F70E8 /* Certificates.pdf */,
 			);
 			path = Greeting;
 			sourceTree = "<group>";
@@ -234,7 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC34B28629CC894B006C1FF5 /* Certificates.pdf in Resources */,
+				FCD4447929D5AFCB007F70E8 /* Certificates.pdf in Resources */,
 				FC4063C9293F66E5008BBE60 /* LaunchScreen.storyboard in Resources */,
 				FC4063C6293F66E5008BBE60 /* Assets.xcassets in Resources */,
 			);
