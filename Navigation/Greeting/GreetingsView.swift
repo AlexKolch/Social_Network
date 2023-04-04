@@ -48,10 +48,10 @@ final class Greetings: UIView {
 - Верстка кодом, Storyboard IB
 - ООП
 - SOLID
-- CocoaPods, Swift Package Manager
+- Swift Package Manager, CocoaPods
 - AutoLayout, SnapKit
 - ARC, ViewController life cycle
-- UserDefautls
+- Realm, UserDefautls
 - Git
 - GCD
 - URLSession
