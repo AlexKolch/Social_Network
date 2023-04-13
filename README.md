@@ -13,7 +13,7 @@
 * Design Patterns (Singleton, Delegate, Observer)
 * UITableView
 * UICollectionView
-* UIScrollView
+* Core Animation
 * AutoLayout
 * GCD
 * URLSession
