@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import FBSDKLoginKit
 
 final class LogInView: UIView {
     // MARK: - Properties
@@ -93,6 +94,13 @@ final class LogInView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
        return button
     }()
+
+//    lazy var fbLoginButton: UIButton = {
+//        let loginButton = FBLoginButton()
+//        loginButton.translatesAutoresizingMaskIntoConstraints = false
+//        return loginButton
+//    }()
+
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -143,7 +151,11 @@ extension LogInView {
             logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 34),
             logInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             logInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            logInButton.heightAnchor.constraint(equalToConstant: 50)
+            logInButton.heightAnchor.constraint(equalToConstant: 50),
+
+//            fbLoginButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 26),
+//            fbLoginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+//            fbLoginButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
     }
 }
