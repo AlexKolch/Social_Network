@@ -42,19 +42,19 @@ final class Greetings: UIView {
 Основной стек:
 - Swift
 - Xcode
-- UIKit, Foundation
-- MVC
+- UIKit, MapKit, WebKit
+- MVC, MVVM
 - Design Patterns (Singleton, Delegate, Observer)
+- Core Animation
 - Верстка кодом, Storyboard IB
-- ООП
-- SOLID
-- CocoaPods, Swift Package Manager
+- ООП, SOLID
+- Swift Package Manager, CocoaPods
 - AutoLayout, SnapKit
 - ARC, ViewController life cycle
-- UserDefautls
+- Realm, UserDefautls
 - Git
-- GCD
-- URLSession
+- Multithreading GCD
+- URLSession, Alamofire, JSON
 - Human Interface Guidelines
 """
         text.font = UIFont.systemFont(ofSize: 14, weight: .light)
