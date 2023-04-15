@@ -1,5 +1,6 @@
 
 import UIKit
+import FBSDKLoginKit
 
 final class ProfileHeaderView: UITableViewHeaderFooterView {
     static let identifier = "profileHeaderID"
@@ -209,5 +210,6 @@ extension ProfileHeaderView {
         ])
     }
 }
+
 
 

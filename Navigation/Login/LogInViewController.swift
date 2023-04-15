@@ -3,9 +3,18 @@ import FacebookLogin
 final class LogInViewController: UIViewController, UITextFieldDelegate {
   let user = DataUser.setupUser
     // MARK: - UIScrollView
+
+    lazy var fbLoginButton: UIButton = {
+        let loginButton = FBLoginButton()
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.delegate = self
+        return loginButton
+    }()
+
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.addSubview(contentView)
+        scrollView.addSubview(fbLoginButton)
         scrollView.backgroundColor = .white
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
@@ -32,7 +41,6 @@ final class LogInViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(scrollView)
         setConstraints()
 
-        checkloginStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,23 +148,6 @@ final class LogInViewController: UIViewController, UITextFieldDelegate {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-
-    private func checkloginStatus() {
-        if let token = AccessToken.current, !token.isExpired {
-            let token = token.tokenString
-
-            let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get)
-
-            request.start { connection, result, error in
-                print("\(result)")}
-        } else {
-            let loginButton = FBLoginButton()
-            loginButton.frame = CGRect(x: 20, y: 580, width: view.frame.width - 40, height: 50)
-            loginButton.delegate = self
-            loginButton.permissions = ["public_profile", "email"]
-            view.addSubview(loginButton)
-        }
-    }
 }
     // MARK: - Constraints
 extension LogInViewController {
@@ -170,6 +161,10 @@ extension LogInViewController {
         contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, constant: 100).isActive = true
+
+        fbLoginButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 500).isActive = true
+        fbLoginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        fbLoginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
 }
     // MARK: - KeyboardSettings
@@ -193,13 +188,24 @@ extension LogInViewController {
 extension LogInViewController: LoginButtonDelegate {
 
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        let token = result?.token?.tokenString
 
-        let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get)
-
-        request.start { connection, result, error in
-            print("\(result)")
+        if error != nil {
+            print(error)
+            return
         }
+
+        guard AccessToken.isCurrentAccessTokenActive else {return}
+        
+        let profileVC = ProfileViewController()
+        navigationController?.pushViewController(profileVC, animated: false)
+
+//        let token = result?.token?.tokenString
+//
+//        let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get)
+//
+//        request.start { connection, result, error in
+//            print("\(result)")
+//        }
     }
 
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {

@@ -1,5 +1,6 @@
 
 import UIKit
+import FacebookLogin
 
 final class ProfileViewController: UIViewController {
     // MARK: - TableView
@@ -10,9 +11,19 @@ final class ProfileViewController: UIViewController {
         return tableView
     }()
 
+    lazy var fbLoginButton: UIButton = {
+        let loginButton = FBLoginButton()
+        loginButton.frame = CGRect(x: 230,
+                                   y: 5,
+                                   width: 150,
+                                   height: 30)
+        loginButton.delegate = self
+        return loginButton
+    }()
+
     // MARK: - View Life Cycle
     override func viewDidLoad() {
-
+        checkloginStatus()
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -26,6 +37,7 @@ final class ProfileViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -40,7 +52,7 @@ extension ProfileViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 
@@ -70,6 +82,8 @@ extension ProfileViewController {
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             guard section == 0 else { return nil }
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifier)
+            headerView?.addSubview(fbLoginButton)
+
             return headerView
         }
 
@@ -124,6 +138,55 @@ extension ProfileViewController {
                 return cell
         }
     }
+}
+
+extension ProfileViewController: LoginButtonDelegate {
+
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+
+        if error != nil {
+            print(error ?? "")
+            return
+        }
+        print("Success logged")
+    }
+
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        if !(AccessToken.isCurrentAccessTokenActive) {
+            let loginVC = LogInViewController()
+            navigationController?.pushViewController(loginVC, animated: false)
+        }
+    }
+
+
+    private func checkloginStatus() {
+        //проверка на наличие авторизации
+        if !(AccessToken.isCurrentAccessTokenActive) {
+//            let loginButton = FBLoginButton()
+//            loginButton.frame = CGRect(x: 20, y: 580, width: view.frame.width - 40, height: 50)
+//            loginButton.delegate = self
+//            loginButton.permissions = ["public_profile", "email"]
+        let loginVC = LogInViewController()
+           // loginVC.view.addSubview(loginButton)
+            navigationController?.pushViewController(loginVC, animated: false)
+        }
+//        if let token = AccessToken.current, !token.isExpired {
+//            let token = token.tokenString
+//
+//            let request = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email, name"], tokenString: token, version: nil, httpMethod: .get)
+//
+//            request.start { connection, result, error in
+//                print("\(result ?? "")")}
+//
+//            let profileVC = ProfileViewController()
+//            navigationController?.pushViewController(profileVC, animated: false)
+//        } else {
+//            let loginButton = FBLoginButton()
+//            loginButton.frame = CGRect(x: 20, y: 580, width: view.frame.width - 40, height: 50)
+//            loginButton.delegate = self
+//            loginButton.permissions = ["public_profile", "email"]
+//            view.addSubview(loginButton)
+        }
 }
 
 
