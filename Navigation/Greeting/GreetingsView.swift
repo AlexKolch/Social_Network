@@ -41,20 +41,21 @@ final class Greetings: UIView {
         text.text = """
 Основной стек:
 - Swift
-- Xcode
-- UIKit, MapKit, WebKit
-- MVC, MVVM
-- Design Patterns (Singleton, Delegate, Observer)
+- Xcode SDK
+- UIKit, MapKit
+- MVC, MVVM, Clean Swift
+- Design Patterns
 - Core Animation
 - Верстка кодом, Storyboard IB
 - ООП, SOLID
-- Swift Package Manager, CocoaPods
+- Swift Package Manager, CocoaPods, Carthage
 - AutoLayout, SnapKit
 - ARC, ViewController life cycle
 - Realm, UserDefautls
 - Git
 - Multithreading GCD
-- URLSession, Alamofire, JSON
+- TDD, Unit/UI Testing
+- URLSession, Alamofire, JSON, REST API
 - Human Interface Guidelines
 """
         text.font = UIFont.systemFont(ofSize: 14, weight: .light)

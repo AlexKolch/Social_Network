@@ -16,12 +16,12 @@ struct DataUser {
 
     static func setupUser()-> DataUser {
         DataUser(
-            name: "Hipster",
-            surname: "Cat",
+            name: "Foo",
+            surname: "Bar",
             email: "cat@mail.ru",
             phone: "89997654321",
             password: "0000",
-            status: "Meow",
+            status: "Baz",
             image: "cat")
     }
 }
