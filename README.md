@@ -19,6 +19,6 @@
 * URLSession
 
 ---
-![Image alt](https://github.com/AlexKolch/Navigation/blob/URLSession/2.jpg)
-![Image alt](https://github.com/AlexKolch/Navigation/blob/URLSession/3.jpg)
-![Image alt](https://github.com/AlexKolch/Navigation/blob/URLSession/4.jpg)
+![Image alt](https://github.com/AlexKolch/Social_Network/blob/main/2.jpg)
+![Image alt](https://github.com/AlexKolch/Social_Network/blob/main/3.jpg)
+![Image alt](https://github.com/AlexKolch/Social_Network/blob/main/4.jpg)
